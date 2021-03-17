@@ -1,0 +1,29 @@
+body {
+  	margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+
+.top-nav {
+	overflow: hidden;
+  	background-color: lightgrey;
+  	position: fixed; /* Set the navbar to fixed position */
+  	width: 100%; /* Full width */
+  	margin-top: 10px;
+}
+
+.top-nav a {
+	text-align: center;
+	font-size: 18px;
+  	font-family: "Times New Roman", Times, serif;
+  	text-decoration: none;
+  	color: black;
+  	display: block;
+  	padding-top: 12px;
+  	padding-bottom: 12px;
+  	float:left;
+  	width: 25%;
+}
+
+.top-nav a:hover {
+  	background-color: lightblue;
+}
