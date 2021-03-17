@@ -1,7 +1,38 @@
 body {
   	margin-top: 30px; /* Add a top margin to avoid content overlay */
+  	font-family: "Times New Roman", Times, serif;
 }
 
+.header-nav{
+	font-size: 18px;
+	font-family: "Times New Roman", Times, serif;
+	position:relative;
+	overflow: hidden;
+  	width: 100%; /* Full width */
+  	background-color: white;
+}
+
+.left-alligned{
+	float:left;
+}
+.centered-alligned text {
+  float: none;
+  position: absolute;
+  left: 50%;
+}
+
+.right-alligned{
+	float:right;
+	padding: 12px;
+}
+
+.login-button{
+	padding: 7px 10px;
+}
+
+.register-button{
+	padding: 7px 10px;
+}
 
 .top-nav {
 	overflow: hidden;
@@ -27,3 +58,9 @@ body {
 .top-nav a:hover {
   	background-color: lightblue;
 }
+
+.top-nav a.active {
+  color: purple;
+}
+
+
