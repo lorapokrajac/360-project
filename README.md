@@ -1,3 +1,3 @@
 # 360-project
 
-This is our project for COSC 360
+This is the home page of the website.
