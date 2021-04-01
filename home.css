@@ -88,6 +88,14 @@ body {
   	padding: 20px;
 }
 
+.profilepic{
+	float: left;
+	background-color: #aaa;
+	width: 10%;
+  	height: 75px;
+  	padding: 20px;
+
+}
 .content{
 	float: left;
   	padding: 0 10px 0 0;
