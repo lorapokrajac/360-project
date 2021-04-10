@@ -28,8 +28,8 @@ else
     //and fetch requsults
     while ($row = mysqli_fetch_assoc($results))
     {
-      echo $row['firstName']." ".$row['lastName']." ".$row['username']." ".$row['email']." ".$row['profilePic']." ".$row['password']."<br/>";
-    }
+echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['profilePicture'] ).'" width="150" height="150"/>';
+	}
 
     mysqli_free_result($results);
     mysqli_close($connection);
