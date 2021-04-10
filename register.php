@@ -39,7 +39,7 @@ else
 		mysqli_free_result($results);
 	} else {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$sql = "INSERT INTO users (username, firstname, lastname, email, profilePic, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$profilePic', md5('$password'))";
+			$sql = "INSERT INTO users (firstName, lastName, username, email, profilePic, password) VALUES ('$firstname', '$lastname', '$username', '$email', '$profilePic', md5('$password'))";
 			$results = mysqli_query($connection, $sql);
 			echo "An account for the user ".$firstname." has been created";
 		}
