@@ -20,12 +20,13 @@ else
 {
     //good connection, so do you thing
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-		if(isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["profilePic"]) && isset($_POST["password"])){
+		if(isset($_POST["submit"])){
 			$firstname = $_POST["firstname"];
 			$lastname = $_POST["lastname"];
 			$username = $_POST["username"];
 			$email = $_POST["email"];
-			$profilepic = $_POST["profilePic"];
+			//$profilePic = $_POST["profilePic"];
+			$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 			$password = $_POST["password"];
 		}
 	}
@@ -35,11 +36,11 @@ else
 
 	if (mysqli_num_rows($results) > 0) {
 		echo "User already exists with this name and/or email";
-		echo "<a href = 'lab9-1.html'> Return to user entry </a>";
+		echo "<a href = 'register.html'> Return to user entry </a>";
 		mysqli_free_result($results);
 	} else {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$sql = "INSERT INTO users (firstName, lastName, username, email, profilePic, password) VALUES ('$firstname', '$lastname', '$username', '$email', '$profilePic', md5('$password'))";
+			$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'))";
 			$results = mysqli_query($connection, $sql);
 			echo "An account for the user ".$firstname." has been created";
 		}

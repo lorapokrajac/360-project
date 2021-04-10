@@ -30,7 +30,7 @@ function checkPasswordMatch(e){
 	<a href="register.html">Register</a>
 		
 </div>
-<form method="post" action="register.php" id="mainForm" >
+<form method="POST" action="register.php" id="mainForm" enctype="multipart/form-data" >
   <div class="container">
     <h1>Create an Account</h1>
     <hr>
@@ -48,7 +48,7 @@ function checkPasswordMatch(e){
     <input type="text" placeholder="Enter Email" name="email" id="email" class="required">
 
 	<label for="profilePic"><b>Profile Picture:</b></label>
-    <input type="file" placeholder="Add Image" name="profilePic" id="profilePic" class="required"><br>
+    <input type="file" placeholder="Add Image" name="image" id="profilePic" class="required"><br>
 	
     <label for="password"><b>Password:</b></label>
     <input type="password" placeholder="Enter Password" name="password" id="password" required>
@@ -57,10 +57,11 @@ function checkPasswordMatch(e){
     <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat" required>
     <hr>
 
-    <button type="submit" class="registerbtn">Create Account</button>
+    <input type="submit" class="registerbtn" name="submit"/>
   </div>
  <div class="container signin">
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 </form>
 </body>
+</html>

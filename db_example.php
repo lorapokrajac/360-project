@@ -21,14 +21,14 @@ if($error != null)
 else
 {
     //good connection, so do you thing
-    $sql = "SELECT * FROM users;";
+    $sql = "SELECT * FROM users WHERE firstName = 'kaylee';";
 
     $results = mysqli_query($connection, $sql);
 
     //and fetch requsults
     while ($row = mysqli_fetch_assoc($results))
     {
-echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['profilePicture'] ).'" width="150" height="150"/>';
+	echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['profilePicture'] ).'" width="150" height="150"/>';
 	}
 
     mysqli_free_result($results);
