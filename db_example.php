@@ -21,7 +21,7 @@ if($error != null)
 else
 {
     //good connection, so do you thing
-    $sql = "SELECT * FROM users WHERE firstName = 'kaylee';";
+    $sql = "SELECT * FROM users WHERE firstName = 'test';";
 
     $results = mysqli_query($connection, $sql);
 

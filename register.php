@@ -25,7 +25,6 @@ else
 			$lastname = $_POST["lastname"];
 			$username = $_POST["username"];
 			$email = $_POST["email"];
-			//$profilePic = $_POST["profilePic"];
 			$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 			$password = $_POST["password"];
 		}
