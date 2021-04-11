@@ -12,9 +12,8 @@
 <?php 
 session_start();
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo "Welcome, " . $_SESSION['username'] . "!";
     echo "<div class='login-register'>";
-	echo "<button class='logout-button'><a href = 'logout.html'>Logout</a></button>";  
+	echo "<button class='logout-button'><a href = 'logout.html'>Logout</a></button>";
 	echo "</div>";
 	}
 	else {
@@ -39,10 +38,16 @@ session_start();
   		<a href="genre.html">Genre</a>
   		<a href="profile.php">Profile</a>
 	</div>
+	<?php 
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    	echo "<b> Welcome, " . $_SESSION['username'] . "!";  
+   	}
+	?>
 	</div>
 	<div class="breadcrumb">
 	<a href="home.php">Home</a>
 	</div>
+
 </div>
 
 <div class="main">
