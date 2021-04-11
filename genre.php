@@ -32,7 +32,7 @@
 	
 	<div class="top-nav">
   		<a href="home.php">Main Page</a>
-  		<a href="recentMovies.html" >Recent Movies</a>
+  		<a href="recentMovies.php" >Recent Movies</a>
   		<a href="genre.php" class="active">Genre</a>	
   		<a href="profile.php">Profile</a>
 	</div>
@@ -61,7 +61,7 @@
   		<div class="grid-item">
   		<h3>Thriller</h3>
  		<img src="parasite.jpg" class="logo" alt="Parasite Movie Poster" width="215" height=300">
-  		<button class="all"> <a href = "thriller.html" > See All </a></button>
+  		<button class="all"> <a href = "thriller.php" > See All </a></button>
   		</div>  
   		<div class="grid-item">
   		<h3>Animated</h3>
@@ -76,22 +76,22 @@
   		<div class="grid-item">
   		<h3>Sci-Fi</h3>
  		<img src="palm.jpg" class="logo" alt="Palm Springs Movie Poster" width="220" height=300">
-  		<button class="all"> <a href = "scifi.html" > See All </a></button>
+  		<button class="all"> <a href = "scifi.php" > See All </a></button>
   		</div>  
   		<div class="grid-item">
   		<h3>Horror</h3>
  		<img src="empty.jpg" class="logo" alt="Empty Man Movie Poster" width="220" height=300">
-  		<button class="all"> <a href = "horror.html" > See All </a></button>
+  		<button class="all"> <a href = "horror.php" > See All </a></button>
   		</div>  
   		<div class="grid-item">
   		<h3>Romance</h3>
  		<img src="allTheBoys.jpg" class="logo" alt="To All The Boys Movie Poster" width="210" height=300">
-  		<button class="all"> <a href = "romance.html" > See All </a></button>
+  		<button class="all"> <a href = "romance.php" > See All </a></button>
   		</div>
   		<div class="grid-item">
   		<h3>Mystery</h3>
  		<img src="enola.jpg" class="logo" alt="Enola Holmes Movie Poster" width="220" height=300">
-  		<button class="all"> <a href = "mystery.html" > See All </a></button>
+  		<button class="all"> <a href = "mystery.php" > See All </a></button>
   		</div>
 </div>
 			
