@@ -51,12 +51,12 @@
   			<div class="grid-item">
   				<h3>Soul</h3>
   				<img src="soul.jpeg" class="logo" alt="Soul Movie Poster" width="215" height=300">
-  				<button class="posts"><a href = "soul.html" > See Posts </a></button>
+  				<button class="posts"><a href = "soul.php" > See Posts </a></button>
   			</div>
   			<div class="grid-item">
   				<h3>Mulan</h3>
  				<img src="mulan.jpg" class="logo" alt="Mulan Movie Poster" width="220" height=300">
-  				<button class="posts"> <a href = "mulan.html" > See Posts </a></button>
+  				<button class="posts"> <a href = "mulan.php" > See Posts </a></button>
   			</div>  
 		</div>			
 </div>
