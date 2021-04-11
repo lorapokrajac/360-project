@@ -40,6 +40,7 @@ else
 	} else {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'))";
+			// use md5 for passwowrd security
 			$results = mysqli_query($connection, $sql);
 			echo "An account for the user ".$firstname." has been created";
 		}
