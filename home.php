@@ -8,14 +8,23 @@
 <body>
 
 <div class="header">	
-	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
-	<div class="login-register">
+<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
+<?php 
+session_start();
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo "Welcome, " . $_SESSION['username'] . "!";
+    echo "<div class='login-register'>";
+	echo "<button class='logout-button'><a href = 'logout.html'>Logout</a></button>";  
+	echo "</div>";
+	}
+	else {
+    	echo "<div class='login-register'>";
+		echo "<button class='login-button'><a href = 'login.html'>Login</a></button>"; 
+		echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
+		echo "</div>";
+	}
+?>
 	
-	
-	
-	<button class="login-button"><a href = "login.html">Login</a></button>  
-	<button class="register-button"><a href = "register.html" > Register </a></button>
-	</div>
 	<div class="search-container">
     <form action="/action_page.php">
       <input type="text" placeholder="Search" name="search">

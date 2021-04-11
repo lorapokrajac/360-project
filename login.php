@@ -37,6 +37,9 @@ else
  	if (mysqli_num_rows($results) > 0) {
  		if($_SERVER["REQUEST_METHOD"] == "POST"){
  			if($row['password'] == md5($password)){
+ 				session_start();
+       			$_SESSION['loggedin'] = true;
+        		$_SESSION['username'] = $username;
 				header( 'Location: home.html' );
  			}else {
     			echo "Username and/or password are invalid";
