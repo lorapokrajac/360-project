@@ -33,12 +33,12 @@
 	<div class="top-nav">
   		<a href="home.php">Main Page</a>
   		<a href="recentMovies.html" >Recent Movies</a>
-  		<a href="genre.html" >Genre</a>	
+  		<a href="genre.php" >Genre</a>	
   		<a href="profile.php">Profile</a>
 	</div>
 	<div class="breadcrumb">
 		<a href="home.php">Home</a> >
-		<a href="genre.html">Genre</a> >
+		<a href="genre.php">Genre</a> >
 		<a href="comedy.php">Comedies</a>
 	</div>
 </div>
