@@ -51,7 +51,7 @@
   			<div class="grid-item">
   				<h3>Kiss The Ground</h3>
   				<img src="kissGround.jpg" class="logo" alt="Kiss The Ground Movie Poster" width="215" height=300">
-  				<button class="posts"><a href = "kissTheGround.html" > See Posts </a></button>
+  				<button class="posts"><a href = "kissTheGround.php" > See Posts </a></button>
   			</div>
 		</div>			
 </div>
