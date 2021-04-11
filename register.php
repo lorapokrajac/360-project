@@ -42,7 +42,8 @@ else
 			$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'))";
 			// use md5 for passwowrd security
 			$results = mysqli_query($connection, $sql);
-			echo "An account for the user ".$firstname." has been created";
+			echo "An account for the user ".$firstname." has been created!";
+			header( 'Location: login.html' );			
 		}
 	}
 
