@@ -31,8 +31,8 @@
 	
 	<div class="top-nav">
   		<a href="home.php">Main Page</a>
-  		<a href="recentMovies.html">Recent Movies</a>
-  		<a href="genre.html">Genre</a>
+  		<a href="recentMovies.php">Recent Movies</a>
+  		<a href="genre.php">Genre</a>
   		<a href="profile.php" class="active" >Profile</a>
 	</div>
 	<div class="breadcrumb">

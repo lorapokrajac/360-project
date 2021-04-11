@@ -32,7 +32,7 @@
 	
 	<div class="top-nav">
   		<a href="home.php">Main Page</a>
-  		<a href="recentMovies.html" >Recent Movies</a>
+  		<a href="recentMovies.php" >Recent Movies</a>
   		<a href="genre.php" >Genre</a>	
   		<a href="profile.php">Profile</a>
 	</div>
@@ -50,18 +50,18 @@
 		<div class="grid-container">
   			<div class="grid-item">
   				<h3>Yes Day</h3>
-  				<img src="yesDay.jpeg" class="logo" alt="Joker Movie Poster" width="215" height=300">
-  				<button class="posts"><a href = "yesDay.html" > See Posts </a></button>
+  				<img src="yesDay.jpeg" class="logo" alt="Yes Day Movie Poster" width="215" height=300">
+  				<button class="posts"><a href = "yesDay.php" > See Posts </a></button>
   			</div>
   			<div class="grid-item">
   				<h3>Palm Springs</h3>
  				<img src="palm.jpg" class="logo" alt="Palm Movie Poster" width="220" height=300">
-  				<button class="posts"> <a href = "palm.html" > See Posts </a></button>
+  				<button class="posts"> <a href = "palm.php" > See Posts </a></button>
   			</div>  
   			<div class="grid-item">
   				<h3>I Care A Lot</h3>
  				<img src="care.jpg" class="logo" alt="I Care A Lot Movie Poster" width="220" height=300">
-  				<button class="posts"> <a href = "iCareALot.html" > See Posts </a></button>
+  				<button class="posts"> <a href = "iCareALot.php" > See Posts </a></button>
   			</div>
 		</div>			
 </div>

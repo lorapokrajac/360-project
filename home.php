@@ -34,7 +34,7 @@ session_start();
 	
 	<div class="top-nav">
   		<a href="home.php" class="active">Main Page</a>
-  		<a href="recentMovies.html">Recent Movies</a>
+  		<a href="recentMovies.php">Recent Movies</a>
   		<a href="genre.php">Genre</a>
   		<a href="profile.php">Profile</a>
 	</div>
