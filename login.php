@@ -40,7 +40,7 @@ else
  				session_start();
        			$_SESSION['loggedin'] = true;
         		$_SESSION['username'] = $username;
-				header( 'Location: home.html' );
+				header( 'Location: home.php' );
  			}else {
     			echo "Username and/or password are invalid";
 				echo "<a href =".'login.html'."></a>";
