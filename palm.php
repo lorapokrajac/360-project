@@ -38,15 +38,15 @@
 	<div class="breadcrumb">
 		<a href="home.php">Home</a> >
 		<a href="genre.php">Genre</a> >
-		<a href="thriller.php">Thrillers</a> >
-		<a href="parasite.php">Parasite</a>
+		<a href="scifi.php">Thrillers</a> >
+		<a href="palm.php">Palm</a>
 	</div>
 </div>
 
 <div class="main">
 	<div class="col-left">
 		<div class="card">
-			<h1>Parasite</h1>
+			<h1>Palm Springs</h1>
 			</div>
 			<div class="card">
 			<h2>Blog Post Title</h2>
@@ -55,7 +55,7 @@
 			<div class="content">
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
 			</div>
-  			<img src="parasite.jpg" class="logo" alt="Parasite Movie Poster" width="215" height=300">
+  			<img src="palm.jpg" class="logo" alt="Palm Movie Poster" width="215" height=300">
 			<h5>User's Rating: </h5>
 			<h5>Date Posted</h5>
 			<div class="card">
@@ -73,7 +73,7 @@
 			<div class="content">
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
 			</div>
-  			<img src="parasite.jpg" class="logo" alt="Parasite Movie Poster" width="215" height=300">
+  			<img src="palm.jpg" class="logo" alt="Palm Movie Poster" width="215" height=300">
 			<h5>User's Rating: </h5>
 			<h5>Date Posted</h5>
 			<div class="card">
@@ -88,15 +88,15 @@
 	<div class="col-right">
 		<div class="card">
 			<u><h2>Movie Facts</h2></u>
-			<h3>Directed By:</h3><p>Bong Joon-Ho</p>
-			<h3>Actors:</h3><p>Cho Yeo‑Jeong, Park So‑dam, Woo‑sik Choi, Jeong Ji‑so </p>
-			<h3>Awards:</h3><p>Academy Award for Best Picture </p>
+			<h3>Directed By:</h3><p>Max Barbakow</p>
+			<h3>Actors:</h3><p>Andy Samberg, Cristin Milioti, Camila Mendes, Tyler Hoechlin</p>
 		</div>
 		<div class="card">
-			<h3>Description</h3><p>A struggling family sees an opportunity when their son starts working for a wealthy family. Eventually, all of them find a way to work within the same household and start living a parasitic life. </p>
+			<h3>Description</h3><p>Two wedding guests begin to develop a romance while living the same day over and over again</p>
 		</div>
 		<div class="card">
-		<h3>Release date:</h3><p>May 30, 2019</p>
+		<h3>Release date:</h3><p>July 10, 2020 </p>
+		<h3>Box Office:</h3><p>765,535 USD</p>
 		</div>
 		<div class="card">
 		<button class="return-top">Back to Top</button> 
