@@ -12,7 +12,7 @@
 	session_start();
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     	echo "<div class='login-register'>";
-		echo "<button class='logout-button'><a href = 'logout.html'>Logout</a></button>";
+		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
 		echo "</div>";
 	}
 	else {
