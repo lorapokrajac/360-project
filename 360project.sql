@@ -63,7 +63,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 ALTER TABLE 'review'
-  ADD PRIMARY KEY (`username`),
+  ADD PRIMARY KEY (`username`);
  
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
