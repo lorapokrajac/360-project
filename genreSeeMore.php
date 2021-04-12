@@ -34,12 +34,15 @@
   		<a href="home.php">Main Page</a>
   		<a href="recentMovies.php" >Recent Movies</a>
   		<a href="genre.php" >Genre</a>	
-  		<a href="profile.php">Profile</a>
+  		<?php
+		if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+			echo "<a href='profile.php'>Profile</a>";
+		}
+		?>
 	</div>
 	<div class="breadcrumb">
 		<a href="home.php">Home</a> >
-		<a href="genre.php">Genre</a> > 
-		<a href="comedy.php">Comedies</a>
+		<a href="genre.php">Genre</a> 
 	</div>
 </div>
 <div class="main">
