@@ -35,6 +35,15 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `review` (
+  `username` varchar(255) NOT NULL,
+  `reviews` varchar(255) NOT NULL,
+  `date` DATE NOT NULL,
+  `movieName` varchar(255) NOT NULL,
+  `rating` INT
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 --
 -- Dumping data for table `users`
 --
@@ -52,6 +61,10 @@ INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePictu
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`),
   ADD UNIQUE KEY `email` (`email`);
+
+ALTER TABLE 'review'
+  ADD PRIMARY KEY (`username`),
+ 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
