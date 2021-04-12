@@ -14,12 +14,14 @@
     		echo "<div class='login-register'>";
 			echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";  
 			echo "</div>";
+			
 		}
 		else {
     		echo "<div class='login-register'>";
 			echo "<button class='login-button'><a href = 'login.html'>Login</a></button>"; 
 			echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
 			echo "</div>";
+			
 		}
 	?>
 	<div class="search-container">
@@ -49,7 +51,7 @@
 			</div>
 			<div class="card">
 			<h2>Blog Post Title</h2>
-			<h3>Your Name</h3>
+			<h3><?php echo $_SESSION['username']; ?></h3>
 			<h5>Your review</h5>
 			<div class="content">
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
