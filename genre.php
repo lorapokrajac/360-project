@@ -12,10 +12,12 @@
 	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 	<?php 
 	session_start();
+	$login = false
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     	echo "<div class='login-register'>";
 		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
 		echo "</div>";
+		$login = true;
 	}
 	else {
     	echo "<div class='login-register'>";
@@ -36,7 +38,7 @@
   		<a href="recentMovies.php" >Recent Movies</a>
   		<a href="genre.php" class="active">Genre</a>	
   		<?php
-		if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+		if ($login) {
 			echo "<a href='profile.php'>Profile</a>";
 		}
 		?>
