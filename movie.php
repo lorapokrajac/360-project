@@ -58,52 +58,8 @@
 </div>
 
 <div class="main">
-	<div class="col-left">
-		<div class="card">
-			<?php
-			echo "<h1>$title</h1>";
-			?>
-			</div>
-			<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3>User Name</h3>
-			<h5>How many reviews?</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-  			<img src="parasite.jpg" class="logo" alt="Parasite Movie Poster" width="215" height=300">
-			<h5>User's Rating: </h5>
-			<h5>Date Posted</h5>
-			<div class="card">
-				<u><h3>Comments</h3></u>
-				<div class = "card">
-					<div class="profilepic">profile picture</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-				</div>
-			</div>
-		</div>
-		<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3>User Name</h3>
-			<h5>How many reviews?</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-  			<img src="parasite.jpg" class="logo" alt="Parasite Movie Poster" width="215" height=300">
-			<h5>User's Rating: </h5>
-			<h5>Date Posted</h5>
-			<div class="card">
-				<u><h3>Comments</h3></u>
-				<div class = "card">
-					<div class="profilepic">profile picture</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-right">
+	
 	<?php
-		
 		$host = "localhost";
 		$database = "360_project";
 		$user = "webuser";
@@ -119,16 +75,46 @@
 		}
 		else
 		{
-    		$sql = "SELECT director, actors, description, awards, boxScore, rdate FROM movie WHERE title = '$title'";
-	        $results = mysqli_query($connection, $sql);
-		while($row = mysqli_fetch_assoc($results)){
-		        echo "<div class='card'>";
-			$director = $row['director'];
-			$actors = $row['actors'];
-			$awards = $row['awards'];
-     			$date = $row['rdate'];
-			$description = $row['description'];
-			$boxScore = $row['boxScore'];
+      $sql = "SELECT director, actors, description, awards, boxScore, rdate, poster FROM movie WHERE title = '$title'";
+	    $results = mysqli_query($connection, $sql);
+		  while($row = mysqli_fetch_assoc($results)){
+			  $director = $row['director'];
+			  $actors = $row['actors'];
+			  $awards = $row['awards'];
+     		$date = $row['rdate'];
+			  $description = $row['description'];
+			  $boxScore = $row['boxScore'];
+        $poster = $row['poster'];
+      }
+			$sql2 = "SELECT username, rating, reviews, blogTitle FROM review WHERE title = '$title';";
+			$results2 = mysqli_query($connection, $sql2);
+      echo "<div class='col-left'>";
+			echo "<div class='card'>";
+			  echo "<h1>$title</h1>";
+      echo "</div>";
+			while($row2 = mysqli_fetch_assoc($results2)){
+				$blogTitle = $row2['blogTitle'];
+				$uname = $row2['username'];
+				$rating = $row2['rating'];
+				$review = $row2['reviews'];
+				echo "<div class='card'>";
+				  echo "<h2>$blogTitle </h2>";
+			 	  echo "<h3>$uname</h3>";
+				  echo "<div class='content'>";
+				    echo "<p>$review</p>";
+				  echo "</div>";
+      
+  			    echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+          
+				  echo "<h5>User's Rating: $rating</h5>";
+				echo "</div>";
+			}
+			echo "</div>";
+			echo "<div class='col-right'>";
+	
+		
+		  echo "<div class='card'>";
+		
 			echo "<u><h2>Movie Facts</h2></u>";
 			echo "<h3>Directed By:</h3><p>$director</p>";
 			echo "<h3>Actors:</h3><p>$actors</p>";
@@ -151,11 +137,11 @@
 			echo "<div class='card'>";
 			echo "<h3>Description</h3><p>$description</p>";
 			echo "</div>";
-    			echo "<div class='card'>";
+    	echo "<div class='card'>";
 			echo "<h3>Release date:</h3><p>$date</p>";
 			echo "</div>";
-			break;
-		}
+		
+		
     		mysqli_free_result($results);
     		mysqli_close($connection);
 		}
