@@ -82,8 +82,48 @@ session_start();
 	<div class="col-right">
 		<div class="card">
 			<h2>Top Box Office Movies</h2>
-			<img src="joker.jpeg" class="logo" alt="Joker Movie Poster" width="175" height=250"><br>
-			<img src="parasite.jpg" class="logo" alt="Joker Movie Poster" width="185" height=250">
+			<?php
+	
+		$host = "localhost";
+		$database = "360_project";
+		$user = "webuser";
+		$password = "P@ssw0rd";
+
+		$connection = mysqli_connect($host, $user, $password, $database);
+
+		$error = mysqli_connect_error();
+		if($error != null)
+		{
+  			$output = "<p>Unable to connect to database!</p>";
+  			exit($output);
+		}
+		else
+		{
+		$sql = "SELECT title, poster, boxScore FROM movie ORDER BY boxScore DESC LIMIT 2;";
+   		$results = mysqli_query($connection, $sql);
+		while ($row = mysqli_fetch_assoc($results)){
+			$poster = $row['poster'];
+			$title = $row['title'];
+			$boxScore = $row['boxScore'];
+			echo "<img src=$poster class='logo' alt='$title' width='175' height=250>";
+			if($boxScore < 1){
+				$boxScore = $boxScore*1000;
+				echo "<p> Box Score: $boxScore Thousand </p>";
+			}else if($boxScore < 1000){
+				echo "<p> Box Score: $boxScore Million </p>";
+			}
+			else{
+				$boxScore = $boxScore/1000;
+				echo "<p> Box Score: $boxScore Billion </p>";
+			}
+			
+		}
+
+  		mysqli_free_result($results);
+    		mysqli_close($connection);
+		}
+
+		?>
 		</div>
 		<div class="card">
 			<div class="adfakeimg">Advertisements</div><br>
