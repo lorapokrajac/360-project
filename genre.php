@@ -12,7 +12,7 @@
 	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 	<?php 
 	session_start();
-	$login = false
+	$login = false;
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     	echo "<div class='login-register'>";
 		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
