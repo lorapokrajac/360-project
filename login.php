@@ -42,13 +42,13 @@ else
         		$_SESSION['username'] = $username;
 				header( 'Location: home.php' );
  			}else {
-    			echo "Username and/or password are invalid";
-				echo "<a href =".'login.html'."></a>";
+    			echo "Oops! Incorrect password. Please ";
+				echo "<a href ='login.html'> try again</a>!";
     		}
  		}
  	} else {
- 		 echo "Username and/or password are invalid";
- 		 echo "<a href = 'login.html'> Try again </a>";
+ 		 echo "Oops! Incorrect username or password. Please ";
+ 		 echo "<a href = 'login.html' > try again </a>!";
  	}
  	
  	mysqli_free_result($results);
