@@ -11,10 +11,12 @@
 <img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 <?php 
 session_start();
+	$login = false;
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo "<div class='login-register'>";
-	echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
-	echo "</div>";
+    		echo "<div class='login-register'>";
+		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
+		echo "</div>";
+		$login = true;
 	}
 	else {
     	echo "<div class='login-register'>";
@@ -36,12 +38,14 @@ session_start();
   		<a href="home.php" class="active">Main Page</a>
   		<a href="recentMovies.php">Recent Movies</a>
   		<a href="genre.php">Genre</a>
-  		<a href="profile.php">Profile</a>
-	</div>
-	<?php 
-	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    	echo "<b> Welcome, " . $_SESSION['username'] . "!";  
-   	}
+		<?php 
+		if ($login) {
+    		echo "<a href='profile.php'>Profile</a>";
+   		}
+		echo "</div>";
+		if ($login) {
+    			echo "<b> Welcome, " . $_SESSION['username'] . "!";  
+   		}
 	?>
 	</div>
 	<div class="breadcrumb">
