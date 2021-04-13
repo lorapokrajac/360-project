@@ -119,7 +119,7 @@
 		}
 		else
 		{
-    		$sql = "SELECT director, actors, description,awards, rdate FROM movie WHERE title = '$title'";
+    		$sql = "SELECT director, actors, description, awards, boxScore, rdate FROM movie WHERE title = '$title'";
 	        $results = mysqli_query($connection, $sql);
 		while($row = mysqli_fetch_assoc($results)){
 		        echo "<div class='card'>";
@@ -128,11 +128,24 @@
 			$awards = $row['awards'];
      			$date = $row['rdate'];
 			$description = $row['description'];
+			$boxScore = $row['boxScore'];
 			echo "<u><h2>Movie Facts</h2></u>";
 			echo "<h3>Directed By:</h3><p>$director</p>";
 			echo "<h3>Actors:</h3><p>$actors</p>";
 			if($awards != NULL){
 				echo "<h3>Awards:</h3><p>$awards</p>";
+			}
+			if($boxScore != NULL){
+				if($boxScore < 1){
+				$boxScore = $boxScore*1000;
+					echo "<h3>Box Score: </h3><p>$boxScore Thousand</p>";
+				}else if($boxScore < 1000){
+					echo "<h3>Box Score: </h3><p>$boxScore Million </p>";
+				}
+				else{
+					$boxScore = $boxScore/1000;
+					echo "<h3>Box Score: </h3><p>$boxScore Billion </p>";
+				}
 			}
 			echo "</div>";
 			echo "<div class='card'>";
