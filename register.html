@@ -2,24 +2,29 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="scripts/validate.js"></script> 
 <link rel="stylesheet" href="register.css">
 
 <!-- Password checking script here!! -->
 <script>
-function checkPasswordMatch(e){
-	var psw = document.getElementById("password").value;
-	var pswCheck = document.getElementById("password-repeat").value;
-	var err = false;
-	if(psw != pswCheck){
-		alert("Passwords do not match. Please re-enter.");
-		makeRed(document.getElementById("password"));
-		makeRed(document.getElementById("password-repeat"));
-		err = true;
-	} 
-	if(err == true){
-		e.preventDefault();
-	}
+
+
+function validateForm() {
+	var username = document.forms["myForm"]["username"].value;
+	var email = document.forms["myForm"]["email"].value;
+	var firstname = document.forms["myForm"]["firstname"].value;
+  	var lastname = document.forms["myForm"]["lastname"].value;
+	var password = document.forms["myForm"]["password"].value;
+  if(username == "" || email == "" || firstname==""){
+  		alert("Oops! You missed something! All boxes must be filled out.");
+		return false;
+  }	else {
+        var psw = document.forms["myForm"]["password"].value;
+		var pswCheck = document.forms["myForm"]["password-repeat"].value;
+		if(psw != pswCheck){
+			alert("Passwords do not match. Please re-enter.");
+			return false;
+		} 
+    }
 }
 </script>
 
@@ -31,15 +36,15 @@ function checkPasswordMatch(e){
 	<a href="register.html">Register</a>
 </div>
 
-<form method="POST" action="register.php" id="mainForm" enctype="multipart/form-data" >
+<form name="myForm" method="POST" action="register.php" id="mainForm" enctype="multipart/form-data" onsubmit="return validateForm()" >
   <div class="container">
     <h1>Create an Account</h1>
     <hr>
 	<label for="firstname"><b>First Name:</b></label>
-    <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" class="required">
+    <input type="text" placeholder="Enter First Name" name="firstname" id="firstname">
 
 	<label for="lastname"><b>Last Name:</b></label>
-    <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname" class="required">
+    <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname">
     
     <label for="username"><b> Username:</b></label>
     <input type="text" placeholder="Enter Username" name="username" id="username" class="required">
@@ -48,7 +53,7 @@ function checkPasswordMatch(e){
     <input type="text" placeholder="Enter Email" name="email" id="email" class="required">
 
 	<label for="profilePic"><b>Profile Picture:</b></label>
-    <input type="file" placeholder="Add Image" name="image" id="profilePic" class="required"><br>
+    <input type="file" placeholder="Add Image" name="image" id="profilePic"><br>
 	
     <label for="password"><b>Password:</b></label>
     <input type="password" placeholder="Enter Password" name="password" id="password" class="required">
