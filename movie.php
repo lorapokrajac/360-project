@@ -119,14 +119,14 @@
 		}
 		else
 		{
-    		$sql = "SELECT director, actors, awards, description, rdate FROM movie WHERE title = '$title';";
-	      $results = mysqli_query($connection, $sql);
+    		$sql = "SELECT director, actors, description,awards, rdate FROM movie WHERE title = '$title'";
+	        $results = mysqli_query($connection, $sql);
 		while($row = mysqli_fetch_assoc($results)){
-		echo "<div class='card'>";
+		        echo "<div class='card'>";
 			$director = $row['director'];
 			$actors = $row['actors'];
 			$awards = $row['awards'];
-      $date = $row['rdate'];
+     			$date = $row['rdate'];
 			$description = $row['description'];
 			echo "<u><h2>Movie Facts</h2></u>";
 			echo "<h3>Directed By:</h3><p>$director</p>";
@@ -134,13 +134,14 @@
 			if($awards != NULL){
 				echo "<h3>Awards:</h3><p>$awards</p>";
 			}
-		echo "</div>";
-		echo "<div class='card'>";
+			echo "</div>";
+			echo "<div class='card'>";
 			echo "<h3>Description</h3><p>$description</p>";
-		echo "</div>";
-    echo "<div class='card'>";
-		echo "<h3>Release date:</h3><p>$date</p>";
-		echo "</div>";
+			echo "</div>";
+    			echo "<div class='card'>";
+			echo "<h3>Release date:</h3><p>$date</p>";
+			echo "</div>";
+			break;
 		}
     		mysqli_free_result($results);
     		mysqli_close($connection);
