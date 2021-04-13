@@ -42,7 +42,15 @@
 	</div>
 	<div class="breadcrumb">
 		<a href="home.php">Home</a> >
-		<a href="genre.php">Genre</a> 
+		<a href="genre.php">Genre</a> > 
+		<?php
+		if(isset($_POST['genre'])){
+			$genre = $_POST['genre'];
+		}else{
+			$genre = $_SESSION['genre'];
+		}
+		     echo "<a href= 'genreSeeMore.php'> $genre </a>";
+		?>
 	</div>
 </div>
 <div class="main">
@@ -50,6 +58,9 @@
 	<?php
 		if(isset($_POST['genre'])){
 			$genre = $_POST['genre'];
+			$_SESSION['genre'] = $genre;
+		}else{
+			$genre = $_SESSION['genre'];
 		}
 			
 		$host = "localhost";
@@ -77,11 +88,14 @@
    		while ($row = mysqli_fetch_assoc($results)){
 			$title = $row['title'];
 			$poster = $row['poster'];
-			echo "<div class='grid-item'>";
+			echo   "<div class='grid-item'>";
+			echo   "<form action = 'movie.php' method = 'post' id='$title'>";
   			echo	"<h3>$title</h3>";
   			echo	"<img src='$poster' class='logo' alt='Yes Day Movie Poster' width='215' height=300>";
-  			echo	"<button class='posts'><a href = 'yesDay.php' > See Posts </a></button>";
-  			echo "</div>";
+  			echo    "<input type='hidden' value='$title' name='title' />";
+			echo    "</form>";
+			echo    "<button type='submit' form='$title' value='Submit'>See more</button>";
+			echo    "</div>";
 			
 		}
 
