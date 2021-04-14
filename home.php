@@ -44,7 +44,7 @@ session_start();
    		}
 		echo "</div>";
 		if ($login) {
-    			echo "<b> Welcome, " . $_SESSION['username'] . "!";  
+    			echo "<p style= 'text-align: center; font-weight: bold;'> Hello, " . $_SESSION['username'] . "!</p>";  
    		}
 	?>
 	</div>
