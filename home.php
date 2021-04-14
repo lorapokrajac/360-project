@@ -55,39 +55,7 @@ session_start();
 </div>
 
 <div class="main">
-	<div class="col-left">
-		<div class="card">
-			<h2>Top Blog Posts</h2>
-			<p>View some of the top blog posts below!</p>
-			</div>
-			<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3>User Name</h3>
-			<h5>How many reviews?</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-			<div class="post-movie">movie poster</div>
-			<h5>User's Rating: </h5>
-			<h5>Date Posted</h5>
-		</div>
-		<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3>User Name</h3>
-			<h5>How many reviews?</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-			<div class="post-movie">movie poster</div>
-			<h5>User's Rating: </h5>
-			<h5>Date Posted</h5>
-		</div>
-	</div>
-	<div class="col-right">
-		<div class="card">
-			<h2>Top Box Office Movies</h2>
-			<?php
-	
+	<?php
 		$host = "localhost";
 		$database = "360_project";
 		$user = "webuser";
@@ -103,6 +71,54 @@ session_start();
 		}
 		else
 		{
+     			$sql2 = "SELECT r.username, rating, reviews, blogTitle, r.rid,r.title, poster FROM review r, likes l, movie m  WHERE r.rid = l.rid AND m.title = r.title LIMIT 3;";
+			$results2 = mysqli_query($connection, $sql2);
+     			echo "<div class='col-left'>";
+			echo "<div class='card'>";
+			echo "<h1>Top Blog Post</h1>";
+     			echo "</div>";
+			while($row2 = mysqli_fetch_assoc($results2)){
+				$blogTitle = $row2['blogTitle'];
+				$uname = $row2['username'];
+				$rating = $row2['rating'];
+				$review = $row2['reviews'];
+				$rid   = $row2['rid'];
+				$poster = $row2['poster'];
+				$title = $row2['title'];
+				echo "<div class='card'>";
+				echo "<h2>$blogTitle </h2>";
+			 	echo "<h3>$uname</h3>";
+				echo "<div class='content'>";
+				echo "<p>$review</p>";
+				echo "</div>";
+      				
+  			       echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+          
+				echo "<h5>User's Rating: $rating</h5>";
+				if($login){
+					echo "<p>";
+					echo "<form action = 'like.php' method = 'POST' id = $rid.'like'>";
+					echo "<input type='hidden' value='$rid' name='rid' />";
+					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
+					echo "<input type='hidden' value='like' name='like' />";
+					echo "</form>";
+					echo "<button type='submit' form= $rid.'like' value='Submit'>Like</button>";
+					echo "<form action = 'like.php' method = 'POST' id = $rid.'save'>";
+					echo "<input type='hidden' value='$rid' name='rid' />";
+					echo "<input type='hidden' value='$uname' name='uname' />";
+					echo "<input type='hidden' value='save' name='like' />";
+					echo "</form>";
+					echo "<button type='submit' form= $rid.'save' value='Submit'>Save</button>";
+					echo "</p>";
+				}
+				echo "</div>";
+			}
+			echo "</div>";
+			echo "<div class='col-right'>";
+	
+		
+		echo "<div class='card'>";
+		echo "<h2>Top Box Office Movies</h2>";
 		$sql = "SELECT title, poster, boxScore FROM movie ORDER BY boxScore DESC LIMIT 2;";
    		$results = mysqli_query($connection, $sql);
 		while ($row = mysqli_fetch_assoc($results)){
