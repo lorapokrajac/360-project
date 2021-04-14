@@ -38,11 +38,20 @@ CREATE TABLE `users` (
 CREATE TABLE `review` (
   `rid` INT NOT NULL,
   `username` varchar(255) NOT NULL,
-  `reviews` varchar(255) NOT NULL,
-  `date` DATE NOT NULL,
-  `movieName` varchar(255) NOT NULL,
-  `rating` INT 
+  `reviews` TEXT NOT NULL,
+  `datePosted` DATE NOT NULL,
+  `blogTitle` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `rating` FLOAT NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `likes` (
+  `rid` INT NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `like` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 
 CREATE TABLE `movie`(
   `title` varchar(255) NOT NULL,
@@ -54,7 +63,7 @@ CREATE TABLE `movie`(
   `awards` TEXT,
   `description` TEXT NOT NULL,
   `rdate` TEXT NOT NULL,
-  `boxScore` varchar(255),
+  `boxScore` FLOAT,
   `mid` INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,6 +74,8 @@ CREATE TABLE `movie`(
 
 INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES
 ('Bob', 'Bobby', 'bobby1', 'bob@bobby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES
+('Rob', 'Robby', 'robby1', 'rob@robby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845');
 
 
 INSERT INTO `movie` (`title`, `poster`,  `genre`, `genre2`, `director`,  `actors`,  `description`,  `rdate`, `boxScore`, `mid`)
@@ -108,6 +119,13 @@ VALUES('Parasite', 'parasite.jpg', 'Thriller', 'Comedy', 'Bong Joon-ho', 'Cho Ye
 'May 30, 2019','258.8','0');
 
 
+
+INSERT INTO `review` (`rid`, `username`, `datePosted`, `title`,  `rating`,`blogTitle`, `reviews`)
+VALUES ('1', 'bobby1', '2021-04-13', 'Godzilla Vs. Kong', '9', 'Best Movie Ever', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.');
+INSERT INTO `review` (`rid`, `username`, `datePosted`, `title`,  `rating`,`blogTitle`, `reviews`)
+VALUES ('2', 'robby1', '2021-03-24', 'Godzilla Vs. Kong', '1', 'Worst Movie Ever', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.');
+
+
 --
 -- Indexes for dumped tables
 --
@@ -124,10 +142,11 @@ ALTER TABLE `movie`
   ADD UNIQUE KEY `mid` (`mid`);
 
 
-ALTER TABLE 'review'
+ALTER TABLE `review`
   ADD PRIMARY KEY (`rid`);
  
-
+ALTER TABLE `review` CHANGE `numLikes` `numLikes` INT(11) NULL DEFAULT '0';
+ALTER TABLE `review` CHANGE `numSaves` `numSaves` INT(11) NULL DEFAULT '0';
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
