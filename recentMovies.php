@@ -80,7 +80,7 @@
 			echo   "<form action = 'movie.php' method = 'post' id='$title'>";
   			echo	"<h3>$title</h3>";
 			if($count < 2)
-				{
+			{
   				echo	"<img src='$poster' class='logo' alt= $title.'Poster' width='215' height=300>";
   			}
 			else
