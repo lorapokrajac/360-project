@@ -75,7 +75,7 @@ session_start();
 			$results2 = mysqli_query($connection, $sql2);
      			echo "<div class='col-left'>";
 			echo "<div class='card'>";
-			echo "<h1>Top Blog Post</h1>";
+			echo "<h1>Top Blog Posts</h1>";
      			echo "</div>";
 			while($row2 = mysqli_fetch_assoc($results2)){
 				$blogTitle = $row2['blogTitle'];
