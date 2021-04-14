@@ -86,7 +86,7 @@
 			  $boxScore = $row['boxScore'];
         $poster = $row['poster'];
       }
-			$sql2 = "SELECT username, rating, reviews, blogTitle FROM review WHERE title = '$title';";
+			$sql2 = "SELECT username, rating, reviews, blogTitle, rid FROM review WHERE title = '$title';";
 			$results2 = mysqli_query($connection, $sql2);
       echo "<div class='col-left'>";
 			echo "<div class='card'>";
@@ -97,16 +97,33 @@
 				$uname = $row2['username'];
 				$rating = $row2['rating'];
 				$review = $row2['reviews'];
+				$rid   = $row2['rid'];
 				echo "<div class='card'>";
-				  echo "<h2>$blogTitle </h2>";
-			 	  echo "<h3>$uname</h3>";
-				  echo "<div class='content'>";
-				    echo "<p>$review</p>";
-				  echo "</div>";
-      
-  			    echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+				echo "<h2>$blogTitle </h2>";
+			 	echo "<h3>$uname</h3>";
+				echo "<div class='content'>";
+				echo "<p>$review</p>";
+				echo "</div>";
+      				
+  			        echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
           
-				  echo "<h5>User's Rating: $rating</h5>";
+				echo "<h5>User's Rating: $rating</h5>";
+				if($login){
+					echo "<p>";
+					echo "<form action = 'like.php' method = 'POST' id = $rid.'like'>";
+					echo "<input type='hidden' value='$rid' name='rid' />";
+					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
+					echo "<input type='hidden' value='like' name='like' />";
+					echo "</form>";
+					echo "<button type='submit' form= $rid.'like' value='Submit'>Like</button>";
+					echo "<form action = 'like.php' method = 'POST' id = $rid.'save'>";
+					echo "<input type='hidden' value='$rid' name='rid' />";
+					echo "<input type='hidden' value='$uname' name='uname' />";
+					echo "<input type='hidden' value='save' name='like' />";
+					echo "</form>";
+					echo "<button type='submit' form= $rid.'save' value='Submit'>Save</button>";
+					echo "</p>";
+				}
 				echo "</div>";
 			}
 			echo "</div>";
