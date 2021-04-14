@@ -42,7 +42,7 @@ CREATE TABLE `review` (
   `datePosted` DATE NOT NULL,
   `blogTitle` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `rating` FLOAT NOT NULL,
+  `rating` FLOAT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `likes` (
