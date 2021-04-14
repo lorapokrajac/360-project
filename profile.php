@@ -14,14 +14,12 @@
     		echo "<div class='login-register'>";
 			echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";  
 			echo "</div>";
-			
 		}
 		else {
     		echo "<div class='login-register'>";
 			echo "<button class='login-button'><a href = 'login.html'>Login</a></button>"; 
 			echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
 			echo "</div>";
-			
 		}
 	?>
 	<div class="search-container">
@@ -45,53 +43,106 @@
 </div>
 
 <div class="main">
-	<div class="col-left">
-		<div class="card">
-			<h2>Your Posts:</h2>
-			</div>
-			<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3><?php echo $_SESSION['username']; ?></h3>
-			<h5>Your review</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-			<div class="post-movie">movie poster</div>
-			<h5>Your Rating: </h5>
-			<h5>Date Posted</h5>
-			<button class="more">See More</button>
-		</div>
-		<div class="card">
-			<h2>Saved Posts:</h2>
-			</div>
-		<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3>User's Name</h3>
-			<h5>How many reviews?</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-			<div class="post-movie">movie poster</div>
-			<h5>User's Rating: </h5>
-			<h5>Date Posted</h5>
-			<button class="more">See More</button>
-		</div>
-		<div class="card">
-			<h2>Liked Posts:</h2>
-			</div>
-		<div class="card">
-			<h2>Blog Post Title</h2>
-			<h3>User's Name</h3>
-			<h5>How many reviews?</h5>
-			<div class="content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.</p>
-			</div>
-			<div class="post-movie">movie poster</div>
-			<h5>User's Rating: </h5>
-			<h5>Date Posted</h5>
-			<button class="more">See More</button>
-		</div>
-	</div>
+
+
+<?php
+$host = "localhost";
+		$database = "360_project";
+		$user = "webuser";
+		$password = "P@ssw0rd";
+
+		$connection = mysqli_connect($host, $user, $password, $database);
+
+		$error = mysqli_connect_error();
+		if($error != null)
+		{
+  			$output = "<p>Unable to connect to database!</p>";
+  			exit($output);
+		}
+		else
+		{
+	echo "<div class='col-left'>";
+
+		//you posts
+		echo "<div class='card'>";
+			echo "<h2>Your Posts:</h2>";
+		echo "</div>";
+		$uname =$_SESSION['username'];
+		$sql = "SELECT blogTitle, reviews, poster, rating FROM review r, movie m WHERE r.title = m.title AND username = '$uname' ORDER BY mid DESC LIMIT 1";
+		$results = mysqli_query($connection, $sql);
+		while($row = mysqli_fetch_assoc($results)){
+			$blogTitle = $row['blogTitle']; 
+			$review = $row['reviews']; 
+			$poster = $row['poster']; 
+			$rating = $row['rating']; 
+		echo "<div class='card'>";
+			echo "<h2>$blogTitle</h2>";
+			echo "<h3><$uname></h3>";
+			echo "<h5>Your review</h5>";
+			echo "<div class='content'>";
+				echo "<p>$review</p>";
+			echo "</div>";
+			 echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+			echo "<h5>Your Rating: $rating</h5>";
+			echo " <h5>Date Posted</h5>";
+			//<button class="more">See More</button>
+		echo "</div>";
+		}
+		//saved post
+		echo "<div class='card'>";
+			echo "<h2>Saved Posts:</h2>";
+		echo "</div>";
+		$sql = "SELECT blogTitle, reviews, poster, rating FROM movie m, review r, likes l WHERE r.title = m.title AND l.rid = r.rid AND l.username ='$uname'  AND l.like = 'save' ORDER BY mid DESC LIMIT 1";
+		$results = mysqli_query($connection, $sql);
+		while($row = mysqli_fetch_assoc($results)){
+			$blogTitle = $row['blogTitle']; 
+			$review = $row['reviews']; 
+			$poster = $row['poster']; 
+			$rating = $row['rating']; 
+		echo "<div class='card'>";
+			echo "<h2>$blogTitle</h2>";
+			echo "<h3><$uname></h3>";
+			echo "<h5>Your review</h5>";
+			echo "<div class='content'>";
+				echo "<p>$review</p>";
+			echo "</div>";
+			 echo "<img src=$poster class='logo'  width='215' height=300>";
+			echo "<h5>Your Rating: $rating</h5>";
+			echo " <h5>Date Posted</h5>";
+			//<button class="more">See More</button>
+		echo "</div>";
+		}
+		//liked post
+		echo "<div class='card'>";
+			echo "<h2>Liked Posts:</h2>";
+			echo "</div>";
+		$sql = "SELECT blogTitle, reviews, poster, rating FROM movie m, review r, likes l WHERE r.title = m.title AND l.rid = r.rid AND l.username ='$uname' AND l.like = 'like' ORDER BY mid DESC LIMIT 1";
+		$results = mysqli_query($connection, $sql);
+		while($row = mysqli_fetch_assoc($results)){
+			$blogTitle = $row['blogTitle']; 
+			$review = $row['reviews']; 
+			$poster = $row['poster']; 
+			$rating = $row['rating']; 
+		echo "<div class='card'>";
+			echo "<h2>$blogTitle</h2>";
+			echo "<h3><$uname></h3>";
+			echo "<h5>Your review</h5>";
+			echo "<div class='content'>";
+				echo "<p>$review</p>";
+			echo "</div>";
+			 echo "<img src=$poster class='logo' width='215' height=300>";
+			echo "<h5>Your Rating: $rating</h5>";
+			echo " <h5>Date Posted</h5>";
+			//<button class="more">See More</button>
+		echo "</div>";
+		}
+
+
+	echo "</div>";
+
+	}
+?>
+
 	<div class="col-right">
 		<div class="card">
 			<h2>Profile Picture</h2>
