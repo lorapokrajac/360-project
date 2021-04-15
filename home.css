@@ -107,6 +107,7 @@ body {
   	padding: 20px;
  	margin-top: 20px;
  	background: white;
+ 	display: inline-block;
 }
 
 .adfakeimg {
@@ -152,11 +153,17 @@ body {
 }
 
 footer{
+	display: block;
+  	background-color: black;
+   	position: fixed;
 	margin: 0 auto;
   	text-align: center;
   	width: 100%;
 }
 
+.return-top{
+	display: inline-block;
+}
 
 .more{
 	padding: 7px 10px;
