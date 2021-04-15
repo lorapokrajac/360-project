@@ -44,7 +44,7 @@ session_start();
    		}
 		echo "</div>";
 		if ($login) {
-    			echo "<p style= 'text-align: center; font-weight: bold;'> Hello, " . $_SESSION['username'] . "!</p>";  
+    			echo "<b> Welcome, " . $_SESSION['username'] . "!";  
    		}
 	?>
 	</div>
@@ -71,11 +71,11 @@ session_start();
 		}
 		else
 		{
-     			$sql2 = "SELECT r.username, rating, reviews, blogTitle, r.rid,r.title, poster FROM review r, likes l, movie m  WHERE r.rid = l.rid AND m.title = r.title LIMIT 3;";
+     			$sql2 = "SELECT r.username, rating, reviews, blogTitle, r.rid,r.title, poster, datePosted FROM review r, likes l, movie m  WHERE r.rid = l.rid AND m.title = r.title LIMIT 3;";
 			$results2 = mysqli_query($connection, $sql2);
      			echo "<div class='col-left'>";
 			echo "<div class='card'>";
-			echo "<h1>Top Blog Posts</h1>";
+			echo "<h1>Top Blog Post</h1>";
      			echo "</div>";
 			while($row2 = mysqli_fetch_assoc($results2)){
 				$blogTitle = $row2['blogTitle'];
@@ -85,6 +85,7 @@ session_start();
 				$rid   = $row2['rid'];
 				$poster = $row2['poster'];
 				$title = $row2['title'];
+				$dp = $row2['datePosted'];
 				echo "<div class='card'>";
 				echo "<h2>$blogTitle </h2>";
 			 	echo "<h3>$uname</h3>";
@@ -93,7 +94,7 @@ session_start();
 				echo "</div>";
       				
   			       echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
-          
+          			echo "<h5>Date posted: $dp </h5>";
 				echo "<h5>User's Rating: $rating</h5>";
 				if($login){
 					echo "<p>";
