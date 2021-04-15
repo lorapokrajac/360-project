@@ -67,6 +67,7 @@ $host = "localhost";
 			echo "<h2>Your Posts:</h2>";
 		echo "</div>";
 		$uname =$_SESSION['username'];
+	if(!array_key_exists('uMore', $_POST) || array_key_exists('uLess', $_POST)) {
 		$sql = "SELECT blogTitle, reviews, poster, rating, datePosted, numLikes, numSaves FROM review r, movie m WHERE r.title = m.title AND username = '$uname' ORDER BY datePosted DESC LIMIT 1";
 		$results = mysqli_query($connection, $sql);
 		while($row = mysqli_fetch_assoc($results)){
@@ -88,63 +89,173 @@ $host = "localhost";
 			echo "<h5>Your Rating: $rating</h5>";
 			echo "<h5>Date posted: $dp </h5>";
 			echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
-			
+			echo "<form method='post'>";
+       					echo "<input type='submit' name='uMore'  class='button' value='See More' />";
+   			echo "</form>";
 		echo "</div>";
 		}
+
+	}else{
+		echo "<div class='card'>";
+           			$sql = "SELECT blogTitle, reviews, poster, rating, datePosted, numLikes, numSaves FROM review r, movie m WHERE r.title = m.title AND username = '$uname' ORDER BY datePosted DESC";
+				$results = mysqli_query($connection, $sql);
+				while($row = mysqli_fetch_assoc($results)){
+					$blogTitle = $row['blogTitle']; 
+				$review = $row['reviews']; 
+				$poster = $row['poster']; 
+				$rating = $row['rating']; 
+				$dp = $row['datePosted'];
+				$numLike  = $row['numLikes'];
+				$numSave = $row['numSaves'];
+			
+				echo "<h2>$blogTitle</h2>";
+				echo "<h3><$uname></h3>";
+				echo "<h5>Your review</h5>";
+				echo "<div class='content'>";
+				echo "<p>$review</p>";
+				echo "</div>";
+			 	echo "<img src=$poster class='logo' width='215' height=300>";
+				echo "<h5>Your Rating: $rating</h5>";
+				echo "<h5>Date posted: $dp </h5>";
+				echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5><br><br>";
+			
+	
+					
+       				
+				}
+			 echo "<form method='post'>";
+       				echo "<input type='submit' name='uLess'  class='button' value='See Less' />";
+   			 echo "</form>";
+			echo "</div>";
+			
+		}
+
+
 		//saved post
 		echo "<div class='card'>";
 			echo "<h2>Saved Posts:</h2>";
 		echo "</div>";
-		$sql = "SELECT blogTitle, reviews, poster, rating, datePosted, numLikes, numSaves FROM movie m, review r, saves s WHERE r.title = m.title AND s.rid = r.rid AND s.username ='$uname' ORDER BY datePosted  DESC LIMIT 1";
-		$results = mysqli_query($connection, $sql);
-		while($row = mysqli_fetch_assoc($results)){
-			$blogTitle = $row['blogTitle']; 
-			$review = $row['reviews']; 
-			$poster = $row['poster']; 
-			$rating = $row['rating']; 
-			$dp = $row['datePosted'];
-			$numLike  = $row['numLikes'];
-			$numSave = $row['numSaves'];
-		echo "<div class='card'>";
-			echo "<h2>$blogTitle</h2>";
-			echo "<h3><$uname></h3>";
-			echo "<h5>Your review</h5>";
-			echo "<div class='content'>";
-				echo "<p>$review</p>";
+		if(!array_key_exists('saveMore', $_POST) || array_key_exists('saveLess', $_POST)) {
+			$sql = "SELECT blogTitle, reviews, poster, rating, datePosted,numLikes, numSaves FROM movie m, review r, saves s WHERE r.title = m.title AND s.rid = r.rid AND s.username ='$uname' ORDER BY datePosted  DESC LIMIT 1";
+			$results = mysqli_query($connection, $sql);
+			if($row = mysqli_fetch_assoc($results)){
+				$blogTitle = $row['blogTitle']; 
+				$review = $row['reviews']; 
+				$poster = $row['poster']; 
+				$rating = $row['rating']; 
+				$dp = $row['datePosted'];
+				$numLike  = $row['numLikes'];
+				$numSave = $row['numSaves'];
+				echo "<div class='card'>";
+					echo "<h2>$blogTitle</h2>";
+					echo "<h3><$uname></h3>";
+					echo "<h5>Your review</h5>";
+					echo "<div class='content'>";
+						echo "<p>$review</p>";
+					echo "</div>";
+					echo "<img src=$poster class='logo' width='215' height=300>";
+					echo "<h5>Date posted: $dp </h5>";
+					echo "<h5>User's Rating: $rating</h5>";
+					echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
+		 			echo "<form method='post'>";
+       						echo "<input type='submit' name='saveMore'  class='button' value='See More' />";
+   					echo "</form>";
+				echo "</div>";
+			}
+		}else {
+				echo "<div class='card'>";
+           			$sql = "SELECT blogTitle, reviews, poster, rating, datePosted,numLikes, numSaves FROM movie m, review r, saves s WHERE r.title = m.title AND s.rid = r.rid AND s.username ='$uname' ORDER BY datePosted  DESC";
+				$results = mysqli_query($connection, $sql);
+				while($row = mysqli_fetch_assoc($results)){
+					$blogTitle = $row['blogTitle']; 
+					$review = $row['reviews']; 
+					$poster = $row['poster']; 
+					$rating = $row['rating']; 
+					$dp = $row['datePosted'];
+					$numLike  = $row['numLikes'];
+					$numSave = $row['numSaves'];
+					echo "<h2>$blogTitle</h2>";
+					echo "<h3><$uname></h3>";
+					echo "<h5>Your review</h5>";
+					echo "<div class='content'>";
+					echo "<p>$review</p>";
+					echo "</div>";
+					echo "<img src=$poster class='logo' width='215' height=300>";
+					echo "<h5>Date posted: $dp </h5>";
+					echo "<h5>User's Rating: $rating</h5>";
+					echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5><br><br>";
+					
+       				
+				}
+			 echo "<form method='post'>";
+       				echo "<input type='submit' name='saveLess'  class='button' value='See Less' />";
+   			 echo "</form>";
 			echo "</div>";
-			 echo "<img src=$poster class='logo'  width='215' height=300>";
-			echo "<h5>Date posted: $dp </h5>";
-			echo "<h5>User's Rating: $rating</h5>";
-			echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
-		echo "</div>";
+			
 		}
 		//liked post
 		echo "<div class='card'>";
 			echo "<h2>Liked Posts:</h2>";
 			echo "</div>";
-		$sql = "SELECT blogTitle, reviews, poster, rating, datePosted,numLikes, numSaves FROM movie m, review r, likes l WHERE r.title = m.title AND l.rid = r.rid AND l.username ='$uname' ORDER BY datePosted  DESC LIMIT 1";
-		$results = mysqli_query($connection, $sql);
-		if($row = mysqli_fetch_assoc($results)){
-			$blogTitle = $row['blogTitle']; 
-			$review = $row['reviews']; 
-			$poster = $row['poster']; 
-			$rating = $row['rating']; 
-			$dp = $row['datePosted'];
-			$numLike  = $row['numLikes'];
-			$numSave = $row['numSaves'];
-		echo "<div class='card'>";
-			echo "<h2>$blogTitle</h2>";
-			echo "<h3><$uname></h3>";
-			echo "<h5>Your review</h5>";
-			echo "<div class='content'>";
-				echo "<p>$review</p>";
+		if(!array_key_exists('likeMore', $_POST) || array_key_exists('likeLess', $_POST)) {
+			$sql = "SELECT blogTitle, reviews, poster, rating, datePosted,numLikes, numSaves FROM movie m, review r, likes l WHERE r.title = m.title AND l.rid = r.rid AND l.username ='$uname' ORDER BY datePosted  DESC LIMIT 1";
+			$results = mysqli_query($connection, $sql);
+			if($row = mysqli_fetch_assoc($results)){
+				$blogTitle = $row['blogTitle']; 
+				$review = $row['reviews']; 
+				$poster = $row['poster']; 
+				$rating = $row['rating']; 
+				$dp = $row['datePosted'];
+				$numLike  = $row['numLikes'];
+				$numSave = $row['numSaves'];
+				echo "<div class='card'>";
+					echo "<h2>$blogTitle</h2>";
+					echo "<h3><$uname></h3>";
+					echo "<h5>Your review</h5>";
+					echo "<div class='content'>";
+						echo "<p>$review</p>";
+					echo "</div>";
+					echo "<img src=$poster class='logo' width='215' height=300>";
+					echo "<h5>Date posted: $dp </h5>";
+					echo "<h5>User's Rating: $rating</h5>";
+					echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
+		 			echo "<form method='post'>";
+       						echo "<input type='submit' name='likeMore'  class='button' value='See More' />";
+   					echo "</form>";
+				echo "</div>";
+			}
+		}else {
+				echo "<div class='card'>";
+           			$sql = "SELECT blogTitle, reviews, poster, rating, datePosted,numLikes, numSaves FROM movie m, review r, likes l WHERE r.title = m.title AND l.rid = r.rid AND l.username ='$uname' ORDER BY datePosted  DESC";
+				$results = mysqli_query($connection, $sql);
+				while($row = mysqli_fetch_assoc($results)){
+					$blogTitle = $row['blogTitle']; 
+					$review = $row['reviews']; 
+					$poster = $row['poster']; 
+					$rating = $row['rating']; 
+					$dp = $row['datePosted'];
+					$numLike  = $row['numLikes'];
+					$numSave = $row['numSaves'];
+					echo "<h2>$blogTitle</h2>";
+					echo "<h3><$uname></h3>";
+					echo "<h5>Your review</h5>";
+					echo "<div class='content'>";
+					echo "<p>$review</p>";
+					echo "</div>";
+					echo "<img src=$poster class='logo' width='215' height=300>";
+					echo "<h5>Date posted: $dp </h5>";
+					echo "<h5>User's Rating: $rating</h5>";
+					echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5><br><br>";
+					
+       				
+				}
+			 echo "<form method='post'>";
+       				echo "<input type='submit' name='likeLess'  class='button' value='See Less' />";
+   			 echo "</form>";
 			echo "</div>";
-			echo "<img src=$poster class='logo' width='215' height=300>";
-			echo "<h5>Date posted: $dp </h5>";
-			echo "<h5>User's Rating: $rating</h5>";
-			echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
-		echo "</div>";
+			
 		}
+  			
 
 
 	echo "</div>";
@@ -184,16 +295,21 @@ $host = "localhost";
 
 	}
 ?>
+
+	
+	<div class="card">
+		<button class="return-top">Back to Top</button> 
+	</div>
 	</div>	
 	
 </div>
-
+	
 <footer>
-	<div class="card">
+<div class="card">
 		<div class="top-link">
 			<a href="#top">Back to Top</a>	
 		</div>
-	</div>	
+	</div>
 </footer>
 </body>
 </html>
