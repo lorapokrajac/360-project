@@ -22,19 +22,32 @@ else
                $uname = $_SESSION['username'];
                $rid = $_POST['rid'];
                $insert = $_POST['like'];
-
-
-    		$sql = "SELECT * FROM `likes` WHERE `username` = '$uname' AND `rid` = '$rid' AND `like` = '$insert' ";
-    		$results = mysqli_query($connection, $sql);
-	if (mysqli_num_rows($results) > 0) {
-		mysqli_free_result($results);
-	} else {  
-		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$sql = "INSERT INTO `likes` (`rid`, `username`, `like`) VALUES ('$rid', '$uname', '$insert')";
-			$results = mysqli_query($connection, $sql);
+		if($insert == 'like'){
+    			$sql = "SELECT * FROM `likes` WHERE `username` = '$uname' AND `rid` = '$rid' ";
+    			$results = mysqli_query($connection, $sql);
+			    if (mysqli_num_rows($results) > 0) {
+				    mysqli_free_result($results);
+			    } else {  
+				    if($_SERVER["REQUEST_METHOD"] == "POST"){
+			    	  $sql = "INSERT INTO `likes` (`rid`, `username`) VALUES ('$rid', '$uname')";
+			    	  $results = mysqli_query($connection, $sql);
+			      } 
+		      }
+      }
+    else if($insert == 'save'){
+			$sql = "SELECT * FROM `saves` WHERE `username` = '$uname' AND `rid` = '$rid' ";
+    			$results = mysqli_query($connection, $sql);
+			if (mysqli_num_rows($results) > 0) {
+				mysqli_free_result($results);
+			} else {  
+				if($_SERVER["REQUEST_METHOD"] == "POST"){
+				$sql = "INSERT INTO `saves` (`rid`, `username`) VALUES ('$rid', '$uname')";
+				$results = mysqli_query($connection, $sql);
+			  }
+      }
 		}
 			
-	}
+	
     mysqli_close($connection);
     header("Location: http://localhost/Project/movie.php");
     exit();
