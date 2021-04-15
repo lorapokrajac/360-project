@@ -58,7 +58,27 @@
 </div>
 
 <div class="main">
+<div class='col-left'>
+	<div class='card'>
+		<?php echo "<h1>$title</h1>"; ?>
+     	</div>
+<div class = 'card'>
+	<form action = 'writeReview.php' method = 'POST' id = 'Review'>
+		<h2> Write a Review </h2>
+		Title: <input type="text" name = 'blogTitle'><br><br>
+		Rating: <input type="number" min="0" max="10" name = 'rating'>
+		<?php
+		$uname = $_SESSION['username'];
+		echo "<input type='hidden' value='$title' name='title' />";
+		echo "<input type='hidden' value= '$uname' name='uname' />";
+		?>
+
+	</form>
+	<br>
+	<textarea name="review" form="Review"> </textarea><br>
+	<button type='submit' form= 'Review' value='Submit'>Submit</button>
 	
+</div>
 	<?php
 		$host = "localhost";
 		$database = "360_project";
@@ -86,18 +106,17 @@
 			  $boxScore = $row['boxScore'];
         $poster = $row['poster'];
       }
-			$sql2 = "SELECT username, rating, reviews, blogTitle, rid FROM review WHERE title = '$title';";
+			$sql2 = "SELECT username, rating, reviews, blogTitle, rid, datePosted, numLikes, numSaves FROM review WHERE title = '$title' ORDER BY datePosted DESC;";
 			$results2 = mysqli_query($connection, $sql2);
-      echo "<div class='col-left'>";
-			echo "<div class='card'>";
-			  echo "<h1>$title</h1>";
-      echo "</div>";
 			while($row2 = mysqli_fetch_assoc($results2)){
 				$blogTitle = $row2['blogTitle'];
 				$uname = $row2['username'];
 				$rating = $row2['rating'];
 				$review = $row2['reviews'];
 				$rid   = $row2['rid'];
+				$dp = $row2['datePosted'];
+				$numLike  = $row2['numLikes'];
+				$numSave = $row2['numSaves'];
 				echo "<div class='card'>";
 				echo "<h2>$blogTitle </h2>";
 			 	echo "<h3>$uname</h3>";
@@ -107,22 +126,25 @@
       				
   			        echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
           
+				echo "<h5>Date posted: $dp </h5>";
 				echo "<h5>User's Rating: $rating</h5>";
+				echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
 				if($login){
-					echo "<p>";
+					
 					echo "<form action = 'like.php' method = 'POST' id = $rid.'like'>";
 					echo "<input type='hidden' value='$rid' name='rid' />";
 					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
 					echo "<input type='hidden' value='like' name='like' />";
 					echo "</form>";
 					echo "<button type='submit' form= $rid.'like' value='Submit'>Like</button>";
+					
 					echo "<form action = 'like.php' method = 'POST' id = $rid.'save'>";
 					echo "<input type='hidden' value='$rid' name='rid' />";
 					echo "<input type='hidden' value='$uname' name='uname' />";
 					echo "<input type='hidden' value='save' name='like' />";
 					echo "</form>";
 					echo "<button type='submit' form= $rid.'save' value='Submit'>Save</button>";
-					echo "</p>";
+					
 				}
 				echo "</div>";
 			}
