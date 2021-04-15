@@ -80,7 +80,7 @@
 			echo   "<form action = 'movie.php' method = 'post' id='$title'>";
   			echo	"<h3>$title</h3>";
 			if($count < 2)
-			{
+				{
   				echo	"<img src='$poster' class='logo' alt= $title.'Poster' width='215' height=300>";
   			}
 			else
@@ -90,8 +90,13 @@
 			}
 			echo    "<input type='hidden' value='$title' name='title' />";
 			echo    "</form>";
-			echo    "<button type='submit' form='$title' value='Submit'>See more</button>";
-			echo 	"<button class='save'>Save</button>";
+			echo    "<button class = 'save' type='submit' form='$title' value='Submit'>See more</button>";
+			
+			echo   "<form action = 'watchlist.php' method = 'post' id= $title.'save'>";
+			echo    "<input type='hidden' value='$title' name='title' />";
+			echo    "</form>";
+			echo    "<button class = 'save' type='submit' form= $title.'save' value='Submit'>Add to watchlist</button>";
+			
 			echo    "</div>";
 			$count++;     
 		}
