@@ -151,13 +151,15 @@ body {
   }
 }
 
-.return-top{
-  	padding: 7px 10px;
+footer{
+	margin: 0 auto;
+  	text-align: center;
+  	width: 100%;
 }
+
 
 .more{
 	padding: 7px 10px;
-	
 }
 
 .grid-container {

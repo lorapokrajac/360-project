@@ -192,15 +192,13 @@
 		}
 
 	?>
-		
-		<div class="card">
-		<button class="return-top">Back to Top</button> 
-	</div>
 	</div>	
 </div>
 	
 <footer>
-
+	<div class="card">
+		<button class="return-top"><a href="#top">Back to Top</a></button> 	
+	</div>
 </footer>
 </body>
 </html>

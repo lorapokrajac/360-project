@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="home.css">
 </head>
 <body>
-
+<a name = "top"></a>
 <div class="header">	
 <img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 <?php 
@@ -153,14 +153,14 @@ session_start();
 			<div class="adfakeimg">Advertisements</div><br>
 			<div class="adfakeimg">Advertisements</div><br>
 		</div>
-		<div class="card">
-		<button class="return-top">Back to Top</button> 
-	</div>
 	</div>	
-</div>
-	
-<footer>
 
+</div>
+
+<footer>
+	<div class="card">
+		<button class="return-top"><a href="#top">Back to Top</a></button> 	
+	</div>	
 </footer>
 </body>
 </html>
