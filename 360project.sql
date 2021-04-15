@@ -32,7 +32,8 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `profilePicture` BLOB,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `adminCode` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `review` (
@@ -81,10 +82,12 @@ CREATE TABLE `movie`(
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES
-('Bob', 'Bobby', 'bobby1', 'bob@bobby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845');
-INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES
-('Rob', 'Robby', 'robby1', 'rob@robby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES
+('Bob', 'Bobby', 'bobby1', 'bob@bobby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845', 'wafs');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES
+('Rob', 'Robby', 'robby1', 'rob@robby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845', 'wafwa');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES
+('Jack', 'Naf', 'jnaf1', 'jn123@kcaj.com', LOAD_FILE('/bob-profile.jpeg'), 'e10adc3949ba59abbe56e057f20f883e', 'NDUIWPFMWI');
 
 
 INSERT INTO `movie` (`title`, `poster`,  `genre`, `genre2`, `director`,  `actors`,  `description`,  `rdate`, `boxScore`, `mid`)
