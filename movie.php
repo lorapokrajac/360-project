@@ -68,16 +68,24 @@
 		Title: <input type="text" name = 'blogTitle'><br><br>
 		Rating: <input type="number" min="0" max="10" name = 'rating'>
 		<?php
+		if($login){
 		$uname = $_SESSION['username'];
 		echo "<input type='hidden' value='$title' name='title' />";
 		echo "<input type='hidden' value= '$uname' name='uname' />";
+		}
 		?>
 
 	</form>
 	<br>
 	<textarea name="review" form="Review"> </textarea><br>
-	<button type='submit' form= 'Review' value='Submit'>Submit</button>
-	
+	<?php
+		if($login){
+			echo "<button type='submit' form= 'Review' value='Submit'>Submit</button>";
+		}else{
+			echo "<p> Login to write a review </p>";
+			echo "<button class='login-button'><a href = 'login.html'>Login</a></button>"; 
+		}
+	?>
 </div>
 	<?php
 		$host = "localhost";
@@ -150,7 +158,7 @@
 			}
 			echo "</div>";
 			echo "<div class='col-right'>";
-			if($login){
+	
 			echo "<div class='card'>";
 			echo   "<form action = 'watchlist.php' method = 'post' id= $title.'save'>";
 			echo    "<input type='hidden' value='$title' name='title' />";
@@ -158,7 +166,6 @@
 			echo    "<button class = 'save' type='submit' form= $title.'save' value='Submit'>Add to watchlist</button>";
 			
 			echo "</div>";
-		}
 		  echo "<div class='card'>";
 		
 			echo "<u><h2>Movie Facts</h2></u>";
@@ -193,15 +200,15 @@
 		}
 
 	?>
+		
+		<div class="card">
+		<button class="return-top">Back to Top</button> 
+	</div>
 	</div>	
 </div>
 	
 <footer>
-	<div class="card">
-		<div class="top-link">
-			<a href="#top">Back to Top</a>	
-		</div>
-	</div>	
+
 </footer>
 </body>
 </html>
