@@ -84,7 +84,7 @@ $host = "localhost";
 			echo "<div class='content'>";
 				echo "<p>$review</p>";
 			echo "</div>";
-			 echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+			 echo "<img src=$poster class='logo' width='215' height=300>";
 			echo "<h5>Your Rating: $rating</h5>";
 			echo "<h5>Date posted: $dp </h5>";
 			echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
