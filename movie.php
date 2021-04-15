@@ -201,14 +201,14 @@
 
 	?>
 		
-		<div class="card">
-		<button class="return-top">Back to Top</button> 
-	</div>
+		
 	</div>	
 </div>
 	
 <footer>
-
+		<div class="top-link">
+			<a href="#top">Back to Top</a>	
+		</div>
 </footer>
 </body>
 </html>
