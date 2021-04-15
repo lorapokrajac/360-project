@@ -136,14 +136,14 @@
 					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
 					echo "<input type='hidden' value='like' name='like' />";
 					echo "</form>";
-					echo "<button type='submit' form= $rid.'like' value='Submit'>Like</button>";
+					echo "<button class = 'save' type='submit' form= $rid.'like' value='Submit'>Like</button>";
 					
 					echo "<form action = 'like.php' method = 'POST' id = $rid.'save'>";
 					echo "<input type='hidden' value='$rid' name='rid' />";
 					echo "<input type='hidden' value='$uname' name='uname' />";
 					echo "<input type='hidden' value='save' name='like' />";
 					echo "</form>";
-					echo "<button type='submit' form= $rid.'save' value='Submit'>Save</button>";
+					echo "<button class = 'save' type='submit' form= $rid.'save' value='Submit'>Save</button>";
 					
 				}
 				echo "</div>";
