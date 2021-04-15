@@ -22,20 +22,24 @@
 			$title = $_POST["title"];
 			$review = $_POST["review"];
 			$uname = $_POST["uname"];
+			$rdate = date("Y-m-d");
       $blogTitle = $_POST["blogTitle"];
 	
 	}
-      $sql = "SELECT `rid` FROM `review` ORDER BY `rid` DESC LIMIT 1";
+      $sql = "SELECT rid FROM review ORDER BY  rid DESC LIMIT 1";
       $results = mysqli_query($connection, $sql);
-      while($row = mysqli_num_rows($results)){
-          $rid = $row["rid"];
-          break;
-      }
 	
-	$rid = $rid + 1;
-      $sql = "INSERT INTO `review` (`rid`, `username`, `reviews`, `title`, `rating`, `blogTitle`) VALUES ('$rid', '$uname', '$review', '$title', '$rating','$blogTitle')";
+      while($row = mysqli_fetch_assoc($results)){
+          $rcount = $row['rid'] + 1;
+	  break;
+          
+      }
+	echo "<h1>$rcount</h1>";
+	
+      $rid = $rcount + 1;
+      $sql = "INSERT INTO `review` (`rid`, `username`, `reviews`, `title`, `rating`, `blogTitle`, `datePosted`) VALUES ('$rid', '$uname', '$review', '$title', '$rating','$blogTitle', '$rdate')";
       $results = mysqli_query($connection, $sql);
-      header( 'Location: http://localhost/Project/movie.php' );			
+     // header( 'Location: http://localhost/Project/movie.php' );			
 		
 	
 
