@@ -151,7 +151,13 @@
 			echo "</div>";
 			echo "<div class='col-right'>";
 	
-		
+			echo "<div class='card'>";
+			echo   "<form action = 'watchlist.php' method = 'post' id= $title.'save'>";
+			echo    "<input type='hidden' value='$title' name='title' />";
+			echo    "</form>";
+			echo    "<button class = 'save' type='submit' form= $title.'save' value='Submit'>Add to watchlist</button>";
+			
+			echo "</div>";
 		  echo "<div class='card'>";
 		
 			echo "<u><h2>Movie Facts</h2></u>";
