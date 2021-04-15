@@ -34,12 +34,12 @@
 	  break;
           
       }
-	echo "<h1>$rcount</h1>";
+
 	
       $rid = $rcount + 1;
       $sql = "INSERT INTO `review` (`rid`, `username`, `reviews`, `title`, `rating`, `blogTitle`, `datePosted`) VALUES ('$rid', '$uname', '$review', '$title', '$rating','$blogTitle', '$rdate')";
       $results = mysqli_query($connection, $sql);
-     // header( 'Location: http://localhost/Project/movie.php' );			
+      header( 'Location: http://localhost/Project/movie.php' );			
 		
 	
 
