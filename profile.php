@@ -148,21 +148,44 @@ $host = "localhost";
 
 
 	echo "</div>";
+	echo "<div class='col-right'>";
+	echo 	"<div class='card'>";
+			echo "<h2>Profile Picture</h2>";
+			echo "<div class='adfakeimg'>profile</div><br>";
+		echo "</div>";
+		echo "<div class='card'>";
+			echo "<h2>Watchlist</h2>";
+		$sql = "SELECT m.title, poster FROM movie m, watchlist w WHERE m.title = w.title AND username = '$uname'";
+		$results = mysqli_query($connection, $sql);
+		while ($row = mysqli_fetch_assoc($results)){
+			$poster = $row['poster'];
+			$title = $row['title'];
+			echo "<h5>$title</h5>";
+			echo "<img src=$poster class='logo' alt='$title' width='175' height=250>";
+		}
+
+		echo "</div>";
+
+
+		echo "<div class='card'>";
+			echo "<h2>Top Rated Movies</h2>";
+			$sql = "SELECT m.title, poster, rating FROM movie m, review r WHERE m.title = r.title AND username = '$uname' ORDER BY rating DESC LIMIT 2";
+			$results = mysqli_query($connection, $sql);
+			while ($row = mysqli_fetch_assoc($results)){
+				$poster = $row['poster'];
+				$title = $row['title'];
+				$rating = $row['rating'];
+				echo "<h5>$title</h5>";
+				echo "<img src=$poster class='logo' alt='$title' width='175' height=250>";
+				echo "<h5>Rating: $rating </h5>";
+		}
+
+		echo "</div>";
 
 	}
 ?>
 
-	<div class="col-right">
-		<div class="card">
-			<h2>Profile Picture</h2>
-			<div class="adfakeimg">profile</div><br>
-		</div>
-		<div class="card">
-			<h2>Top Movies || Watchlist</h2>
-			<div class="adfakeimg">Movie</div><br>
-			<div class="adfakeimg">Movie</div><br>
-			<div class="adfakeimg">Movie</div><br>
-		</div>
+	
 	<div class="card">
 		<button class="return-top">Back to Top</button> 
 	</div>
