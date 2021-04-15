@@ -8,6 +8,18 @@ body {
   	background: #f1f1f1;
 }
 
+footer{
+   	position: fixed;
+	margin: 0 auto;
+  	text-align: center;
+  	width: 100%;
+}
+
+.card .top-link{
+ 	display: inline-block;
+	margin: auto;
+}
+
 .main{
 	padding: 20px;
  	margin-top: 120px;
@@ -107,7 +119,6 @@ body {
   	padding: 20px;
  	margin-top: 20px;
  	background: white;
- 	display: inline-block;
 }
 
 .adfakeimg {
@@ -152,18 +163,7 @@ body {
   }
 }
 
-footer{
-	display: block;
-  	background-color: black;
-   	position: fixed;
-	margin: 0 auto;
-  	text-align: center;
-  	width: 100%;
-}
 
-.return-top{
-	display: inline-block;
-}
 
 .more{
 	padding: 7px 10px;

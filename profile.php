@@ -189,9 +189,11 @@ $host = "localhost";
 </div>
 
 <footer>
-<div class="card">
-		<button class="return-top"><a href="#top">Back to Top</a></button> 	
-	</div>
+	<div class="card">
+		<div class="top-link">
+			<a href="#top">Back to Top</a>	
+		</div>
+	</div>	
 </footer>
 </body>
 </html>
