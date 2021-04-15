@@ -71,7 +71,7 @@ session_start();
 		}
 		else
 		{
-     			$sql2 = "SELECT r.username, rating, reviews, blogTitle, r.rid,r.title, poster, datePosted FROM review r, likes l, movie m  WHERE r.rid = l.rid AND m.title = r.title LIMIT 3;";
+     			$sql2 = "SELECT r.username, rating, reviews, blogTitle, r.rid,r.title, poster, datePosted, numLikes, numSaves FROM review r, movie m  WHERE  m.title = r.title ORDER BY (numLikes + numSaves) DESC LIMIT 3;";
 			$results2 = mysqli_query($connection, $sql2);
      			echo "<div class='col-left'>";
 			echo "<div class='card'>";
@@ -86,6 +86,8 @@ session_start();
 				$poster = $row2['poster'];
 				$title = $row2['title'];
 				$dp = $row2['datePosted'];
+				$numLike = $row2['numLikes'];
+				$numSave = $row2['numSaves'];
 				echo "<div class='card'>";
 				echo "<h2>$blogTitle </h2>";
 			 	echo "<h3>$uname</h3>";
@@ -93,9 +95,10 @@ session_start();
 				echo "<p>$review</p>";
 				echo "</div>";
       				
-  			       echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+  			        echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
           			echo "<h5>Date posted: $dp </h5>";
 				echo "<h5>User's Rating: $rating</h5>";
+				echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
 				if($login){
 					echo "<p>";
 					echo "<form action = 'like.php' method = 'POST' id = $rid.'like'>";
