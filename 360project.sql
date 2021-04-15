@@ -47,11 +47,18 @@ CREATE TABLE `review` (
 
 CREATE TABLE `likes` (
   `rid` INT NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `like` varchar(255) NOT NULL
+  `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `saves` (
+  `rid` INT NOT NULL,
+  `username` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `watchlist` (
+  `title` INT NOT NULL,
+  `username` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `movie`(
   `title` varchar(255) NOT NULL,
@@ -145,8 +152,6 @@ ALTER TABLE `movie`
 ALTER TABLE `review`
   ADD PRIMARY KEY (`rid`);
  
-ALTER TABLE `review` CHANGE `numLikes` `numLikes` INT(11) NULL DEFAULT '0';
-ALTER TABLE `review` CHANGE `numSaves` `numSaves` INT(11) NULL DEFAULT '0';
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
