@@ -32,7 +32,7 @@ else
 		}
     mysqli_close($connection);
     $_SESSION['title'] = $title;
-    header("Location: http://localhost/Project/movie.php");
+    header("Location: movie.php");
     exit();
     }
   
