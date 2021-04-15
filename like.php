@@ -22,6 +22,12 @@ else
                $uname = $_SESSION['username'];
                $rid = $_POST['rid'];
                $insert = $_POST['like'];
+	       $sql = "SELECT numLikes, numSaves FROM review WHERE rid = '$rid'";
+	       $results = mysqli_query($connection, $sql);
+		while($row = mysqli_fetch_assoc($results)){
+			$numLike = $row['numLike'];
+			$numSave = $row['numSave'];
+		}
 		if($insert == 'like'){
     			$sql = "SELECT * FROM `likes` WHERE `username` = '$uname' AND `rid` = '$rid' ";
     			$results = mysqli_query($connection, $sql);
@@ -31,6 +37,9 @@ else
 				    if($_SERVER["REQUEST_METHOD"] == "POST"){
 			    	  $sql = "INSERT INTO `likes` (`rid`, `username`) VALUES ('$rid', '$uname')";
 			    	  $results = mysqli_query($connection, $sql);
+				  $numLike = $numLike + 1;
+				  $sql = "UPDATE `review` SET numLikes = '$numLike' WHERE rid = '$rid'";
+				  $results = mysqli_query($connection, $sql);
 			      } 
 		      }
       }
@@ -42,6 +51,9 @@ else
 			} else {  
 				if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$sql = "INSERT INTO `saves` (`rid`, `username`) VALUES ('$rid', '$uname')";
+				$results = mysqli_query($connection, $sql);
+				$numSave = $numSave + 1;
+				$sql = "UPDATE `review` SET numSaves = '$numSave' WHERE rid = '$rid'";
 				$results = mysqli_query($connection, $sql);
 			  }
       }
