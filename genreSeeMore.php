@@ -11,10 +11,19 @@
 	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 	<?php 
 	session_start();
+	if(isset($_POST['genre'])){
+		$genre = $_POST['genre'];
+		$_SESSION['genre'] = $genre;
+	}else{
+		$genre = $_SESSION['genre'];
+	}
+			
+	$login = false;
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    	echo "<div class='login-register'>";
+    		echo "<div class='login-register'>";
 		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
 		echo "</div>";
+		$login = true;
 	}
 	else {
     	echo "<div class='login-register'>";
@@ -35,7 +44,7 @@
   		<a href="recentMovies.php" >Recent Movies</a>
   		<a href="genre.php" >Genre</a>	
   		<?php
-		if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+		if ($login) {
 			echo "<a href='profile.php'>Profile</a>";
 		}
 		?>
@@ -44,25 +53,13 @@
 		<a href="home.php">Home</a> >
 		<a href="genre.php">Genre</a> > 
 		<?php
-		if(isset($_POST['genre'])){
-			$genre = $_POST['genre'];
-		}else{
-			$genre = $_SESSION['genre'];
-		}
-		     echo "<a href= 'genreSeeMore.php'> $genre </a>";
+		 echo "<a href= 'genreSeeMore.php'> $genre </a>";
 		?>
 	</div>
 </div>
 <div class="main">
 	<div class="card">
 	<?php
-		if(isset($_POST['genre'])){
-			$genre = $_POST['genre'];
-			$_SESSION['genre'] = $genre;
-		}else{
-			$genre = $_SESSION['genre'];
-		}
-			
 		$host = "localhost";
 		$database = "360_project";
 		$user = "webuser";
@@ -94,7 +91,12 @@
   			echo	"<img src='$poster' class='logo' alt='Yes Day Movie Poster' width='215' height=300>";
   			echo    "<input type='hidden' value='$title' name='title' />";
 			echo    "</form>";
-			echo    "<button type='submit' form='$title' value='Submit'>See more</button>";
+			echo    "<button class = 'save' type='submit' form='$title' value='Submit'>See more</button>";
+			echo   "<form action = 'watchlist.php' method = 'post' id= $title.'save'>";
+			echo    "<input type='hidden' value='$title' name='title' />";
+			echo    "</form>";
+			echo    "<button class = 'save' type='submit' form= $title.'save' value='Submit'>Add to watchlist</button>";
+			
 			echo    "</div>";
 			
 		}
