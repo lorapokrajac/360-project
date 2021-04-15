@@ -61,7 +61,7 @@ else
 			
 	
     mysqli_close($connection);
-    header("Location: http://localhost/Project/movie.php");
+    header("Location: movie.php");
     exit();
     }
   
