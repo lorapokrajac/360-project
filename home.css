@@ -117,16 +117,10 @@ footer{
 
 .card {
   	padding: 20px;
- 	margin-top: 20px;
+ 	margin: 0 auto;
  	background: white;
 }
 
-.adfakeimg {
-  	background-color: #aaa;
-  	width: 100%;
-  	height: 250px;
-  	padding: 20px;
-}
 
 .profilepic{
 	float: left;
