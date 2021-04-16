@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  padding: 20px;
+  background-color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: none;
+  background: lightgrey;;
+}
+input[type=text]:hover, input[type=password]:hover {
+  background: #f1f1f1;
+}
+
+input[type=file]{
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: none;
+  background: lightgrey;
+}
+input[type=file]:hover{
+  background: #f1f1f1;
+}
+
+hr {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.registerbtn {
+  background-color: lightgrey;
+  color: black;
+  padding: 16px 20px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.registerbtn:hover {
+	background: #f1f1f1;
+}
+
+a {
+  color: royalblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}

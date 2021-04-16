@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="register.css">
+
+<!-- Password checking script here!! -->
+<script>
+
+
+function validateForm() {
+	var username = document.forms["myForm"]["username"].value;
+	var email = document.forms["myForm"]["email"].value;
+	var firstname = document.forms["myForm"]["firstname"].value;
+  	var lastname = document.forms["myForm"]["lastname"].value;
+	var password = document.forms["myForm"]["password"].value;
+  if(username == "" || email == "" || firstname==""){
+  		alert("Oops! You missed something! All boxes must be filled out.");
+		return false;
+  }	else {
+        var psw = document.forms["myForm"]["password"].value;
+		var pswCheck = document.forms["myForm"]["password-repeat"].value;
+		if(psw != pswCheck){
+			alert("Passwords do not match. Please re-enter.");
+			return false;
+		} 
+    }
+}
+</script>
+
+</head>
+
+<body>
+<div class="breadcrumb">
+	<a href="home.php">Home</a> >
+	<a href="register.html">Register</a>
+</div>
+
+<form name="myForm" method="POST" action="register.php" id="mainForm" enctype="multipart/form-data" onsubmit="return validateForm()" >
+  <div class="container">
+    <h1>Create an Account</h1>
+    <hr>
+	<label for="firstname"><b>First Name:</b></label>
+    <input type="text" placeholder="Enter First Name" name="firstname" id="firstname">
+
+	<label for="lastname"><b>Last Name:</b></label>
+    <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname">
+    
+    <label for="username"><b> Username:</b></label>
+    <input type="text" placeholder="Enter Username" name="username" id="username" class="required">
+   
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" class="required">
+
+	<label for="profilePic"><b>Profile Picture:</b></label>
+    <input type="file" placeholder="Add Image" name="image" id="profilePic"><br>
+	
+    <label for="password"><b>Password:</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password" class="required">
+
+    <label for="password-repeat"><b>Repeat Password:</b></label>
+    <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat" class="required">
+    <hr>
+
+    <label for="admin"><b>Enter Admin Code If Provided:</b></label>
+    <input type="text" placeholder="Admin Code" name="admin-check" id="admin-check">
+    <hr>
+
+    <input type="submit" class="registerbtn" name="submit"/>
+  </div>
+ <div class="container signin">
+    <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+  </div>
+</form>
+</body>
+</html>
