@@ -57,7 +57,6 @@ else
 			header( 'Location: login.html' );			
 		}
 	}
-
     
     mysqli_close($connection);
 }
