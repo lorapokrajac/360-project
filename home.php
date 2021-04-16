@@ -144,19 +144,28 @@ session_start();
 			}
 			
 		}
-
+		echo "</div>";
+	
   		mysqli_free_result($results);
+  		
+  		echo "<div class='card'>";
+		echo "<h2>Advertisements</h2>";
+		$sql = "SELECT link, image FROM ads LIMIT 2;";
+   		$results2 = mysqli_query($connection, $sql);
+		while ($row2 = mysqli_fetch_assoc($results2)){
+			$link = $row2['link'];
+			$image = $row2['image'];
+			echo "<a href= $link >";
+			echo "<img src=$image class='ad' alt='$link' width='175' height=250>";
+			echo "</a>";
+			
+		}
+  		
+  		
     		mysqli_close($connection);
 		}
 
 		?>
-		</div>
-		<div class="card">
-			<div class="adfakeimg">Advertisements</div><br>
-			<div class="adfakeimg">Advertisements</div><br>
-		</div>
-	</div>	
-
 </div>
 	
 <footer>

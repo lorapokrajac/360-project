@@ -77,7 +77,10 @@ CREATE TABLE `movie`(
   `mid` INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+CREATE TABLE `ads`(
+	`link` varchar(255) NOT NULL,
+	`image` varchar(255) NOT NULL
+ )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `users`
 --
@@ -137,6 +140,11 @@ VALUES ('1', 'bobby1', '2021-04-13', 'Godzilla Vs. Kong', '9', 'Best Movie Ever'
 INSERT INTO `review` (`rid`, `username`, `datePosted`, `title`,  `rating`,`blogTitle`, `reviews`)
 VALUES ('2', 'robby1', '2021-03-24', 'Godzilla Vs. Kong', '1', 'Worst Movie Ever', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis. In egestas erat imperdiet sed euismod nisi porta lorem. Neque ornare aenean euismod elementum nisi. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Nisi est sit amet facilisis magna etiam tempor. Tristique senectus et netus et malesuada fames ac turpis. Ornare arcu dui vivamus arcu felis bibendum ut. Velit scelerisque in dictum non consectetur a erat nam at. Leo vel fringilla est ullamcorper eget nulla facilisi.');
 
+
+INSERT INTO `ads` (`link`, `image`)
+VALUES ('https://www.heinz.com/products/heinztomatoketchup', 'heinz-ad.jpeg');
+INSERT INTO `ads` (`link`, `image`)
+VALUES ('https://www.tridentgum.com/', 'trident-ad.jpeg');
 
 --
 -- Indexes for dumped tables
