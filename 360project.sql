@@ -60,7 +60,7 @@ CREATE TABLE `saves` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `watchlist` (
-  `title` INT NOT NULL,
+  `title` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
