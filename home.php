@@ -155,13 +155,13 @@ session_start();
 		while ($row2 = mysqli_fetch_assoc($results2)){
 			$link = $row2['link'];
 			$image = $row2['image'];
-			echo "<a href= $link >";
+			echo "<a href= $link>";
 			echo "<img src=$image class='ad' alt='$link' width='175' height=250>";
 			echo "</a>";
 			
 		}
   		
-  		
+  			mysqli_free_result($results2);
     		mysqli_close($connection);
 		}
 
