@@ -261,7 +261,7 @@ $host = "localhost";
 	echo "</div>";
 	echo "<div class='col-right'>";
 	echo 	"<div class='card'>";
-			echo "<h2>".$uname."'s Profile</h2>";
+			echo "<h2> Hi, ".$uname."!</h2>";
 			$sql = "SELECT * FROM users WHERE username = '$uname'";
     		$results = mysqli_query($connection, $sql);
    		 	while ($row = mysqli_fetch_assoc($results))
