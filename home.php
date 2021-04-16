@@ -12,6 +12,7 @@
 <?php 
 session_start();
 	$login = false;
+	$admin=false;
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     		echo "<div class='login-register'>";
 		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
@@ -24,11 +25,22 @@ session_start();
 		echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
 		echo "</div>";
 	}
+	if($_SESSION['admin']==true){
+		$admin=true;
+	}
 ?>
 	
 	<div class="search-container">
     <form action="/action_page.php">
       <input type="text" placeholder="Search" name="search">
+	  <?php
+	  if($admin==true){
+	  echo "<input type='checkbox' id='user' name='user' value='user'>
+  	<label for='user'>User</label>";
+	}
+	?>
+	  <input type="checkbox" id="post" name="post" value="post">
+  	<label for="post">Post</label>
       <button type="submit" class="search-button">Submit</button>
     </form>
   </div>  
@@ -90,13 +102,36 @@ session_start();
 				$numSave = $row2['numSaves'];
 				echo "<div class='card'>";
 				echo "<h2>$blogTitle </h2>";
+				if($admin==true){
+				echo "<form action='editPost.php' method='post'>
+				<input type='hidden' name='uname' value='$uname' />
+				<input type='hidden' name='review' value='$review' />
+				<button>Edit</button>
+				</form>";
+				echo "<form action='deletePost.php' method='post'>
+				<input type='hidden' name='uname' value='$uname' />
+				<input type='hidden' name='review' value='$review' />
+				<button>Delete</button>
+				</form>";
+				}
 			 	echo "<h3>$uname</h3>";
 				echo "<div class='content'>";
 				echo "<p>$review</p>";
 				echo "</div>";
       				
-  			        echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
-          			echo "<h5>Date posted: $dp </h5>";
+  			    echo "<img src=$poster class='logo' alt=$title width='215' height=300>";
+				  $sql3="SELECT * FROM comment WHERE reviewer='$uname' AND title='$title'";
+				  $results3 = mysqli_query($connection, $sql3);
+				  echo "<h3>Comments:</h3>";
+				  while($row3 = mysqli_fetch_assoc($results3)){
+					  $commenter=$row3['username'];
+					  $comment=$row3['comments'];
+					  $date=$row3['datePosted'];
+					  echo ("<div>
+						  <p>$commenter: $comment on $date</p>
+					  </div><hr>");
+				  }
+          		echo "<h5>Date posted: $dp </h5>";
 				echo "<h5>User's Rating: $rating</h5>";
 				echo "<h5>Total Likes: $numLike     Total Saves: $numSave</h5>";
 				if($login){
@@ -115,6 +150,12 @@ session_start();
 					echo "<input type='hidden' value='save' name='like' />";
 					echo "</form>";
 					echo "<button class = 'save' type='submit' form= $rid.'save' value='Submit'>Save</button>";
+					echo "<form action = 'comment.php' method = 'POST' id ='commentForm'>";
+					echo "<input type='hidden' value='$rid' name='rid' />";
+					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
+					echo "<input type='hidden' value='$title' name='title' />";
+					echo "</form>";
+					echo "<button class = 'save' type='submit' form= 'commentForm' value='Submit'>Comment</button>";
 					echo "</p>";
 				}
 				echo "</div>";
@@ -151,10 +192,10 @@ session_start();
   		echo "<div class='card'>";
 		echo "<h2>Advertisements</h2>";
 		$sql = "SELECT link, image FROM ads LIMIT 2;";
-   		$results2 = mysqli_query($connection, $sql);
-		while ($row2 = mysqli_fetch_assoc($results2)){
-			$link = $row2['link'];
-			$image = $row2['image'];
+   		$results3 = mysqli_query($connection, $sql);
+		while ($row3 = mysqli_fetch_assoc($results3)){
+			$link = $row3['link'];
+			$image = $row3['image'];
 			
 			
 			echo "<a href= '$link' target='_blank' onClick='window.location.href='$link'>";
@@ -163,7 +204,7 @@ session_start();
 			
 		}
   		
-  			mysqli_free_result($results2);
+  			mysqli_free_result($results3);
     		mysqli_close($connection);
 		}
 
@@ -172,9 +213,9 @@ session_start();
 	
 <footer>
 	<div class="card">
-		<div class="top-link">
-			<a href="#top">Back to Top</a>	
 		</div>
+			<a href="#top" class="return-top">Top</a>
+		</div>	
 	</div>	
 </footer>
 </body>

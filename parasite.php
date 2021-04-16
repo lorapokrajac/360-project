@@ -10,6 +10,7 @@
 	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 	<?php 
 	session_start();
+    $admin=false;
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     	echo "<div class='login-register'>";
 		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
@@ -21,10 +22,21 @@
 		echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
 		echo "</div>";
 	}
+	if($_SESSION['admin']==true){
+		$admin=true;
+	}
 	?>
 	<div class="search-container">
     <form action="/action_page.php">
       <input type="text" placeholder="Search" name="search">
+      <?php
+	  if($admin==true){
+	  echo "<input type='checkbox' id='user' name='user' value='user'>
+  		<label for='user'>User</label>";
+	}
+	?>
+	  <input type="checkbox" id="post" name="post" value="post">
+  	<label for="post">Post</label>
       <button type="submit" class="search-button">Submit</button>
     </form>
   </div> 
@@ -105,7 +117,9 @@
 </div>
 	
 <footer>
-
+	</div>
+		<a href="#top" class="return-top">Top</a>
+	</div>	
 </footer>
 </body>
 </html>

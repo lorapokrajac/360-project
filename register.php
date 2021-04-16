@@ -27,6 +27,7 @@ else
 			$email = $_POST["email"];
 			$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 			$password = $_POST["password"];
+            $adminCode = $_POST["admin-check"];
 		}
 	}
 
@@ -39,7 +40,7 @@ else
 		mysqli_free_result($results);
 	} else {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'))";
+			$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'),'$adminCode')";
 			// use md5 for passwowrd security
 			$results = mysqli_query($connection, $sql);
 			echo "An account for the user ".$firstname." has been created!";

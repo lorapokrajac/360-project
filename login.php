@@ -38,18 +38,25 @@ else
  		if($_SERVER["REQUEST_METHOD"] == "POST"){
  			if($row['password'] == md5($password)){
  				session_start();
-       			$_SESSION['loggedin'] = true;
-        		$_SESSION['username'] = $username;
-				header( 'Location: home.php' );
- 			}else {
-    			echo "Oops! Incorrect password. Please ";
-				echo "<a href ='login.html'> try again</a>!";
-    		}
- 		}
- 	} else {
+				 if($row['password'] == md5($password)&&$row['adminCode']=="NDUIWPFMWI"){
+					 $_SESSION['loggedin'] = true;
+					 $_SESSION['username'] = $username;
+					 $_SESSION['admin']=true;
+					 header( 'Location: home.php' );
+				 }else if($row['password'] == md5($password)&&$row['disabled']==true){
+					 echo("This user has been disabled. Come back later.");
+				 }else if($row['password'] == md5($password)&&$row['disabled']==false){
+					 $_SESSION['loggedin'] = true;
+					 $_SESSION['username'] = $username;
+					 $_SESSION['admin']=false;
+					 header( 'Location: home.php' );
+			 } else {
  		 echo "Oops! Incorrect username or password. Please ";
  		 echo "<a href = 'login.html' > try again </a>!";
- 	}
+ 	}else {
+		echo "Please use post!  ";
+		echo "<a href = 'login.html' > try again </a>!";
+   }
  	
  	mysqli_free_result($results);
     mysqli_close($connection);

@@ -33,7 +33,8 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `profilePicture` BLOB,
   `password` varchar(255) NOT NULL,
-  `adminCode` varchar(255)
+  `adminCode` varchar(255),
+  `disabled` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `review` (
@@ -77,6 +78,14 @@ CREATE TABLE `movie`(
   `mid` INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `comment`(
+  `reviewer` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `comments` varchar(255) NOT NULL,
+  `datePosted` DATE NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE `ads`(
 	`link` varchar(255) NOT NULL,
 	`image` varchar(255) NOT NULL
@@ -85,12 +94,12 @@ CREATE TABLE `ads`(
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES
-('Bob', 'Bobby', 'bobby1', 'bob@bobby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845', 'wafs');
-INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES
-('Rob', 'Robby', 'robby1', 'rob@robby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845', 'wafwa');
-INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES
-('Jack', 'Naf', 'jnaf1', 'jn123@kcaj.com', LOAD_FILE('/bob-profile.jpeg'), 'e10adc3949ba59abbe56e057f20f883e', 'NDUIWPFMWI');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`,`disabled`) VALUES
+('Bob', 'Bobby', 'bobby1', 'bob@bobby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845', 'wafs','false');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`,`disabled`) VALUES
+('Rob', 'Robby', 'robby1', 'rob@robby.com', LOAD_FILE('/bob-profile.jpeg'), '0f359740bd1cda994f8b55330c86d845', 'wafwa','false');
+INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`,`disabled`) VALUES
+('Jack', 'Naf', 'jnaf1', 'jn123@kcaj.com', LOAD_FILE('/test-profile.jpeg'), 'e10adc3949ba59abbe56e057f20f883e', 'NDUIWPFMWI','false');
 
 
 INSERT INTO `movie` (`title`, `poster`,  `genre`, `genre2`, `director`,  `actors`,  `description`,  `rdate`, `boxScore`, `mid`)

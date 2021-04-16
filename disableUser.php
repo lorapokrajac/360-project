@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +31,9 @@
 	?>
 	
 	<div class="search-container">
-    <form action="/action_page.php">
+    <form method="post" action="search.php">
       <input type="text" placeholder="Search" name="search">
-	  <?php
+      <?php
 	  if($admin==true){
 	  echo "<input type='checkbox' id='user' name='user' value='user'>
   	<label for='user'>User</label>";
@@ -42,6 +44,7 @@
       <button type="submit" class="search-button">Submit</button>
     </form>
   </div> 
+	
 	<div class="top-nav">
   		<a href="home.php">Main Page</a>
   		<a href="recentMovies.php" >Recent Movies</a>
@@ -50,33 +53,58 @@
 	</div>
 	<div class="breadcrumb">
 		<a href="home.php">Home</a> >
-		<a href="genre.php">Genre</a> >
-		<a href="action.php">Action</a>
+		<a href="search.php">Search</a>
 	</div>
 </div>
 
 <div class="main">
-		<div class="card">
-			<h1>Action</h1>
-		</div>
-		<div class="grid-container">
-  			<div class="grid-item">
-  				<h3>Mulan</h3>
-  				<img src="mulan.jpg" class="logo" alt="Mulan Movie Poster" width="215" height=300">
-  				<button class="posts"><a href = "mulan.php" > See Posts </a></button>
-  			</div>
-  			<div class="grid-item">
-  				<h3>Godzilla Vs. Kong</h3>
- 				<img src="godzillaKong.jpeg" class="logo" alt="Gorilla Vs Kong Movie Poster" width="220" height=300">
-  				<button class="posts"> <a href = "godzillaKong.php" > See Posts </a></button>
-  			</div>  
-		</div>
+    <?php
+    $host = "localhost";
+    $database = "360_project";
+    $user = "webuser";
+    $password = "P@ssw0rd"; 
+    
+    $connection = mysqli_connect($host, $user, $password, $database);
+    $wanted=$_SESSION['finduser'];
+        $query1="UPDATE users SET disabled=true WHERE username='$wanted'";
+        $results = mysqli_query($connection, $query1);
+        // echo ("<scipt>alert('Successful')</script>");
+        $query2="SELECT firstName, lastName, username, email, profilePicture FROM users WHERE username='$wanted'";
+        $results2 = mysqli_query($connection, $query2);
+		while($row = mysqli_fetch_assoc($results2)){
+            $fn=$row['firstName'];
+			$ln = $row['lastName']; 
+			$usern = $row['username'];
+			$email = $row['email'];
+			$pp  = $row['profilePicture'];
+        echo ("<br>
+		<div class='users' style='position:relative;margin: top 10px;'>
+        <fieldset>
+        <legend>$usern(Disabled)</legend>");
+        //<label>Profile picture: <img src='data:jpeg;base64,' . $pp . '' /></label><br>
+        echo("<label>First name: $fn</label><br>
+        <label>Last name: $ln</label><br>
+        <label>email: $email</label><br>
+        <a href='enableUser.php' >Enable</a>
+        <a href='disableUser.php'>Disable</a>
+        </fieldset>
+        <br>
+		</div>");
+        }
+    mysqli_close($connection);
+        ?>
 </div>
 	
 <footer>
-		</div>
-		<a href="#top" class="return-top">Top</a>
-	</div>	
 </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

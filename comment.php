@@ -9,6 +9,7 @@
 	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 	<?php 
 	session_start();
+    $admin=false;
 	if(isset($_POST['title'])){
 		$title = $_POST['title'];
 		$_SESSION['title'] = $title;
@@ -34,7 +35,7 @@
 	}
 	?>
 	<div class="search-container">
-    <form action="/action_page.php">
+    <form method="post" action="search.php">
       <input type="text" placeholder="Search" name="search">
       <?php
 	  if($admin==true){
@@ -75,29 +76,20 @@
 		<?php echo "<h1>$title</h1>"; ?>
      	</div>
 <div class = 'card'>
-<?php
-		if($login){
-			?>
-	<form action = 'writeReview.php' method = 'POST' id = 'Review'>
-		<h2> Write a Review </h2>
-		Title: <input type="text" name = 'blogTitle'><br><br>
-		Rating: <input type="number" min="0" max="10" name = 'rating'>
+	<form action = 'writeComment.php' method = 'POST' id = 'commentForm'>
+		<h2> Write a Comment</h2>
 		<?php
 		$uname = $_SESSION['username'];
+        $un=$_POST['uname'];
 		echo "<input type='hidden' value='$title' name='title' />";
-		echo "<input type='hidden' value= '$uname' name='uname' />";
+        echo "<input type='hidden' value= '$uname' name='uname' />";
+		echo "<input type='hidden' value= '$un' name='reviewer' />";
 		?>
-
+        <input type="submit" name="submit" />
+        <br>
 	</form>
-	<br>
-	<textarea name="review" form="Review"> </textarea><br>
-	<?php
-			echo "<button type='submit' form= 'Review' value='Submit'>Submit</button>";
-		}else{
-			echo "<p> Login to write a review </p>";
-			echo "<button class='login-button'><a href = 'login.html'>Login</a></button>"; 
-		}
-	?>
+        <textarea form='commentForm' name='comment' style='height:250px;width:600px;font-size:12pt;'></textarea>
+	
 </div>
 	<?php
 		$host = "localhost";
@@ -126,7 +118,7 @@
 			  $boxScore = $row['boxScore'];
         $poster = $row['poster'];
       }
-			$sql2 = "SELECT username, rating, reviews, blogTitle, rid, datePosted, numLikes, numSaves FROM review WHERE title = '$title' ORDER BY datePosted DESC;";
+			$sql2 = "SELECT username, rating, reviews, blogTitle, rid, datePosted, numLikes, numSaves FROM review WHERE title = '$title' AND username='$un' ORDER BY datePosted DESC;";
 			$results2 = mysqli_query($connection, $sql2);
 			while($row2 = mysqli_fetch_assoc($results2)){
 				$blogTitle = $row2['blogTitle'];
@@ -139,18 +131,6 @@
 				$numSave = $row2['numSaves'];
 				echo "<div class='card'>";
 				echo "<h2>$blogTitle </h2>";
-				if($admin==true){
-					echo "<form action='editPost.php' method='post'>
-					<input type='hidden' name='uname' value='$uname' />
-					<input type='hidden' name='review' value='$review' />
-					<button>Edit</button>
-					</form>";
-					echo "<form action='deletePost.php' method='post'>
-					<input type='hidden' name='uname' value='$uname' />
-					<input type='hidden' name='review' value='$review' />
-					<button>Delete</button>
-					</form>";
-                }
 			 	echo "<h3>$uname</h3>";
 				echo "<div class='content'>";
 				echo "<p>$review</p>";
@@ -176,12 +156,6 @@
 					echo "<input type='hidden' value='save' name='like' />";
 					echo "</form>";
 					echo "<button class = 'save' type='submit' form= $rid.'save' value='Submit'>Save</button>";
-					echo "<form action = 'comment.php' method = 'POST' id = 'commentForm'>";
-					echo "<input type='hidden' value='$rid' name='rid' />";
-					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
-					echo "<input type='hidden' value='$title' name='title' />";
-					echo "</form>";
-					echo "<button class = 'save' type='submit' form= 'commentForm' value='Submit'>Comment</button>";
 					
 				}
 				echo "</div>";
@@ -231,14 +205,14 @@
 
 	?>
 		
-		
+		</div>
+		<a href="#top" class="return-top">Top</a>
+	</div>	
 	</div>	
 </div>
 	
 <footer>
-	</div>
-		<a href="#top" class="return-top">Top</a>
-	</div>	
+
 </footer>
 </body>
 </html>

@@ -11,6 +11,7 @@
 	<img src="logo.jpg" class="logo" alt="Movie Logo" width="70" height="70">
 	<?php 
 	session_start();
+    $admin=false;
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     	echo "<div class='login-register'>";
 		echo "<button class='logout-button'><a href = 'logout.php'>Logout</a></button>";
@@ -21,6 +22,9 @@
 		echo "<button class='login-button'><a href = 'login.html'>Login</a></button>"; 
 		echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
 		echo "</div>";
+	}
+	if($_SESSION['admin']==true){
+		$admin=true;
 	}
 	?>
 	<div class="search-container">
@@ -58,6 +62,9 @@
 </div>
 	
 <footer>
+		</div>
+		<a href="#top" class="return-top">Top</a>
+	</div>	
 </footer>
 </body>
 </html>

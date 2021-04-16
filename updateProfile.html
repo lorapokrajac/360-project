@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <script>
+
+
+        function validateForm() {
+                var psw = document.forms["myForm"]["newpassword"].value;
+                var pswCheck = document.forms["myForm"]["newpassword-repeat"].value;
+                if(psw != pswCheck){
+                    alert("Passwords do not match. Please re-enter.");
+                    return false;
+                } 
+            
+        }
+        </script>
+<head>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body class="login">
+    <div class="breadcrumb">
+        <a href="home.php">Home</a> >
+        <a href="profile.php">Profile</a> 
+    </div>
+    <div class="loginHeader">
+        <h1>Edit Profile</h1>
+        <hr>
+    </div>
+    <div>
+        <form name="myForm" method="POST" action="updateProfile.php" id="mainForm" enctype="multipart/form-data" onsubmit="return validateForm()" >
+            <div class="container">
+                <label for="oldusername"><b>Old Username:</b></label>
+              <input type="text" placeholder="Enter Old Username" name="oldusername" id="username" class="required">
+              <label for="oldpassword"><b>Old Password:</b></label>
+              <input type="password" placeholder="Enter Old Password" name="oldpassword" id="password" class="required">
+
+              <label for="username"><b>New Username:</b></label>
+              <input type="text" placeholder="Enter New Username" name="newusername" id="username" class="required">
+              <label for="password"><b>New Password:</b></label>
+              <input type="password" placeholder="Enter New Password" name="newpassword" id="password" class="required">
+              <label for="password-repeat"><b>Repeat New Password:</b></label>
+              <input type="password" placeholder="Repeat Password" name="newpassword-repeat" id="password-repeat" class="required">
+              <label for="profilePic"><b>New Profile Picture:</b></label>
+              <input type="file" placeholder="Add Image" name="image" id="profilePic"><br>
+              <hr>
+          
+              <input type="submit" class="registerbtn" name="submit"/>
+            </div>
+          </form>
+    </div>
+
+</body>
+</html>
