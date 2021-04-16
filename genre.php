@@ -26,9 +26,9 @@
 		echo "<button class='register-button'><a href = 'register.html' > Register </a></button>";
 		echo "</div>";
 	}
-	if($_SESSION['admin']==true){
-		$admin=true;
-	}
+	  if(isset($_SESSION['admin']) && $_SESSION['admin'] == true){
+            $admin=true;
+        }
 	?>
 	<div class="search-container">
     <form method="post" action="search.php">
