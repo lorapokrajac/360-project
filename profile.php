@@ -261,8 +261,17 @@ $host = "localhost";
 	echo "</div>";
 	echo "<div class='col-right'>";
 	echo 	"<div class='card'>";
-			echo "<h2>Profile Picture</h2>";
-			echo "<div class='adfakeimg'>profile</div><br>";
+			echo "<h2>".$uname."'s Profile</h2>";
+			$sql = "SELECT * FROM users WHERE username = '$uname'";
+    		$results = mysqli_query($connection, $sql);
+   		 	while ($row = mysqli_fetch_assoc($results))
+    		{
+			echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['profilePicture'] ).'" width="150" height="150"/>';
+			}
+
+    mysqli_free_result($results);
+			
+			
 		echo "</div>";
 		echo "<div class='card'>";
 			echo "<h2>Watchlist</h2>";
