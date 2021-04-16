@@ -27,7 +27,7 @@ else
 			$email = $_POST["email"];
 			$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 			$password = $_POST["password"];
-            $adminCode = $_POST["admin-check"];
+			$adminCode = $_POST["admin-check"];
 		}
 	}
 

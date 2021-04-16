@@ -53,6 +53,7 @@ else
 			 } else {
  		 echo "Oops! Incorrect username or password. Please ";
  		 echo "<a href = 'login.html' > try again </a>!";
+ 		 }
  	}else {
 		echo "Please use post!  ";
 		echo "<a href = 'login.html' > try again </a>!";
