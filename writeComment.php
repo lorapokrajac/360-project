@@ -27,7 +27,7 @@
 	}
       $sql = "INSERT INTO comment (`reviewer`, `title`, `username`, `comments`, `datePosted`) VALUES ('$reviewer','$title','$uname','$com',now())";
       $results = mysqli_query($connection, $sql);
-      header( 'Location: http://localhost/Project/home.php' );			
+      header( 'Location: home.php' );			
 		
 	
 
