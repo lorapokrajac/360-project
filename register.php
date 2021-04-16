@@ -27,7 +27,11 @@ else
 			$email = $_POST["email"];
 			$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 			$password = $_POST["password"];
-			$adminCode = $_POST["admin-check"];
+			if(isset($_POST['admin-check'])){
+				$adminCode = $_POST["admin-check"];
+			}else{
+				$adminCode = NULL;
+			}
 		}
 	}
 
@@ -40,9 +44,15 @@ else
 		mysqli_free_result($results);
 	} else {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'),'$adminCode')";
+			if($adminCode != NULL){
+				$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`, `adminCode`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'),'$adminCode')";
+				// use md5 for passwowrd security
+				$results = mysqli_query($connection, $sql);
+			}else{
+				$sql = "INSERT INTO `users` (`firstName`, `lastName`, `username`, `email`, `profilePicture`, `password`) VALUES ('$firstname', '$lastname', '$username', '$email', '$image', md5('$password'))";
 			// use md5 for passwowrd security
-			$results = mysqli_query($connection, $sql);
+				$results = mysqli_query($connection, $sql);
+			}
 			echo "An account for the user ".$firstname." has been created!";
 			header( 'Location: login.html' );			
 		}
