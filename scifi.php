@@ -28,7 +28,7 @@
 	}
 	?>
 	<div class="search-container">
-    <form action="/action_page.php">
+    <form method="post" action="search.php">
       <input type="text" placeholder="Search" name="search">
       <button type="submit" class="search-button">Submit</button>
     </form>
