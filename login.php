@@ -57,6 +57,8 @@ else
  	}else {
 		echo "Please use post!  ";
 		echo "<a href = 'login.html' > try again </a>!";
+		}
+   }
    }
  	
  	mysqli_free_result($results);
