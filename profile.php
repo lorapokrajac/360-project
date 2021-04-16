@@ -305,10 +305,6 @@ $host = "localhost";
 	}
 ?>
 
-	
-	<div class="card">
-		<button class="return-top">Back to Top</button> 
-	</div>
 	</div>	
 	
 </div>
