@@ -176,12 +176,13 @@
 					echo "<input type='hidden' value='save' name='like' />";
 					echo "</form>";
 					echo "<button class = 'save' type='submit' form= $rid.'save' value='Submit'>Save</button>";
-					echo "<form action = 'comment.php' method = 'POST' id = 'commentForm'>";
+					
+					echo "<form action = 'comment.php' method = 'POST' id = $rid.'commentForm'>";
 					echo "<input type='hidden' value='$rid' name='rid' />";
 					echo "<input type='hidden' value='$uname'.'like' name='uname' />";
 					echo "<input type='hidden' value='$title' name='title' />";
 					echo "</form>";
-					echo "<button class = 'save' type='submit' form= 'commentForm' value='Submit'>Comment</button>";
+					echo "<button class = 'save' type='submit' form= $rid.'commentForm' value='Submit'>Comment</button>";
 					
 				}
 				echo "</div>";
