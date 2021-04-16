@@ -20,7 +20,7 @@ else
 { 
 	       session_start();
                $uname = $_SESSION['username'];
-		$_SESSION['title'] = $_POST['title'];
+               $_SESSION['title'] = $_POST['title'];
                $rid = $_POST['rid'];
                $insert = $_POST['like'];
 	       $sql = "SELECT numLikes, numSaves FROM review WHERE rid = '$rid'";
