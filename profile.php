@@ -279,7 +279,7 @@ $host = "localhost";
     		$results = mysqli_query($connection, $sql);
    		 	while ($row = mysqli_fetch_assoc($results))
     		{
-			echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['profilePicture'] ).'" width="150" height="150"/>';
+			echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['profilePicture'] ).'" width="220" height="300"/>';
 			}
 
     mysqli_free_result($results);
